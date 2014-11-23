@@ -6,9 +6,9 @@ defined('_JEXEC') or die('Restricted Access');
 class WorkerstatusViewWorkerstatuses extends SmartyView
 {
 
-    protected $persons;
-    protected $pagination;
-    protected $canDo;
+    public $persons;
+    public $pagination;
+    public $canDo;
 
     function display($tpl = null)
     {
@@ -40,14 +40,14 @@ class WorkerstatusViewWorkerstatuses extends SmartyView
 
         $this->addToolBar();
 
-        $tpl = parent::display($tpl);
+        parent::display($tpl);
         
     }
 
     /**
      * Setting the toolbar
      */
-    protected function addToolBar()
+    public function addToolBar()
     {
         $canDo = WorkerstatusHelper::getActions($this->state->get('filter.workerstatus_id'));
         $user  = JFactory::getUser();

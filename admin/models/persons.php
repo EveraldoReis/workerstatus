@@ -69,8 +69,8 @@ class WorkerstatusModelPersons extends JModelList
 
         //CHANGE THIS QUERY AS YOU NEED...
         $query->select('*, '
-                . '(SELECT name FROM #__workerstatus_workerstatuses WHERE id = a.workerstatus_id) AS workerstatus_name,'
-                . '(SELECT name FROM #__workerstatus_businesses WHERE id = a.business_id) AS business_name')
+                        . '(SELECT name FROM #__workerstatus_workerstatuses WHERE id = a.workerstatus_id) AS workerstatus_name,'
+                        . '(SELECT name FROM #__workerstatus_businesses WHERE id = a.business_id) AS business_name')
                 ->from('#__workerstatus_persons AS a')
                 ->order($db->escape($this->getState('list.ordering', 'a.cid')) . ' ' .
                         $db->escape($this->getState('list.direction', 'desc')));
@@ -112,6 +112,11 @@ class WorkerstatusModelPersons extends JModelList
 
         //echo $db->replacePrefix( (string) $query );//debug
         return $query;
+    }
+
+    function getPersons()
+    {
+        return parent::getItems();
     }
 
     /**
@@ -172,7 +177,8 @@ class WorkerstatusModelPersons extends JModelList
         $db     = JFactory::getDBO();
         $query  = $db->getQuery(true);
         $query->update('#__workerstatus_persons');
-        $query->set(array($db->quoteName('state') . '=' . $value));
+        $query->set(array(
+            $db->quoteName('state') . '=' . $value));
         $query->where(array(
             "id IN ('$cids')"));
         $db->setQuery($query);
@@ -190,16 +196,19 @@ class WorkerstatusModelPersons extends JModelList
         $db->setQuery($query);
         return $result = $db->query();
     }
-    
-    function reorder($ids, $inc){
+
+    function reorder($ids, $inc)
+    {
         return true;
     }
-    
-    function saveorder($pks, $order){
+
+    function saveorder($pks, $order)
+    {
         
     }
-    
-    function checkin($ids){
+
+    function checkin($ids)
+    {
         
     }
 

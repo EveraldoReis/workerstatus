@@ -21,7 +21,7 @@ class WorkerstatusControllerPersons extends JControllerAdmin
      * Proxy for getModel.
      * @since	1.6
      */
-    public function getModel($name = 'Persons', $prefix = 'WorkerstatusModel')
+    public function getModel($name = 'Persons', $prefix = 'WorkerstatusModel', $config = Array())
     {
         $model = parent::getModel($name, $prefix, array(
                     'ignore_request' => true));

@@ -15,7 +15,7 @@ class WorkerstatusControllerSizes extends JControllerAdmin
      * Proxy for getModel.
      * @since	1.6
      */
-    public function getModel($name = 'Sizes', $prefix = 'WorkerstatusModel')
+    public function getModel($name = 'Sizes', $prefix = 'WorkerstatusModel', $config = Array())
     {
         $model = parent::getModel($name, $prefix, array(
                     'ignore_request' => true));

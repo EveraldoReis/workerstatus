@@ -7,7 +7,7 @@ defined('_JEXEC') or exit('Restricted access');
 class WorkerstatusViewBusiness extends SmartyView
 {
 
-    protected $canDo;
+    public $canDo;
 
     function display($tpl = null)
     {
@@ -25,7 +25,7 @@ class WorkerstatusViewBusiness extends SmartyView
         $this->setDocument();
     }
 
-    protected function addToolBar()
+    public function addToolBar()
     {
         $input = JFactory::getApplication()->input;
 
@@ -84,7 +84,7 @@ class WorkerstatusViewBusiness extends SmartyView
      *
      * @return void
      */
-    protected function setDocument()
+    public function setDocument()
     {
         $isNew    = ($this->person->id < 1);
         $document = JFactory::getDocument();

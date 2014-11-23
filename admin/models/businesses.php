@@ -110,6 +110,11 @@ class WorkerstatusModelBusinesses extends JModelList
         return $query;
     }
 
+    function getBusinesses()
+    {
+        return parent::getItems();
+    }
+
     /**
      * Method to get a store id based on model configuration state.
      *

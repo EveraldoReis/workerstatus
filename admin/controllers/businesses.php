@@ -14,7 +14,7 @@ class WorkerstatusControllerBusinesses extends JControllerAdmin
      * Proxy for getModel.
      * @since	1.6
      */
-    public function getModel($name = 'Businesses', $prefix = 'WorkerstatusModel')
+    public function getModel($name = 'Businesses', $prefix = 'WorkerstatusModel', $config = Array())
     {
         $this->smarty = new Smarty;
         $model = parent::getModel($name, $prefix, array(

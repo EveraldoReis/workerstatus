@@ -2,17 +2,15 @@
 
 defined('_JEXEC') or exit('Restricted access');
 
-
-
 class WorkerstatusViewWorkerstatus extends SmartyView
 {
 
-    protected $canDo;
+    public $canDo;
 
     function display($tpl = null)
     {
         $this->form   = $this->get('Form');
-        $this->person   = $this->get('Person');
+        $this->person = $this->get('Person');
         $this->script = $this->get('Script');
 
         // What Access Permissions does this user have? What can (s)he do?
@@ -25,7 +23,7 @@ class WorkerstatusViewWorkerstatus extends SmartyView
         $this->setDocument();
     }
 
-    protected function addToolBar()
+    public function addToolBar()
     {
         $input = JFactory::getApplication()->input;
 
@@ -52,7 +50,6 @@ class WorkerstatusViewWorkerstatus extends SmartyView
                 JToolBarHelper::custom('workerstatus.save2new', 'save-new.png', 'save-new_f2.png',
                         'JTOOLBAR_SAVE_AND_NEW', false);
             }
-            JToolBarHelper::cancel('workerstatus.cancel', 'JTOOLBAR_CANCEL');
         }
         else
         {
@@ -75,8 +72,8 @@ class WorkerstatusViewWorkerstatus extends SmartyView
                 JToolBarHelper::custom('workerstatus.save2copy', 'save-copy.png', 'save-copy_f2.png',
                         'JTOOLBAR_SAVE_AS_COPY', false);
             }
-            JToolBarHelper::cancel('workerstatus.cancel', 'JTOOLBAR_CLOSE');
         }
+        JToolBarHelper::cancel('workerstatus.cancel', 'JTOOLBAR_CLOSE');
     }
 
     /**
@@ -84,7 +81,7 @@ class WorkerstatusViewWorkerstatus extends SmartyView
      *
      * @return void
      */
-    protected function setDocument()
+    public function setDocument()
     {
         $isNew    = ($this->person->id < 1);
         $document = JFactory::getDocument();
