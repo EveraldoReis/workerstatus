@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_CARDAPIO_ITEM_VIEW_DEFAULT_TITLE">
+		<message>
+                        <![CDATA[COM_CARDAPIO_ITEM_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="request" addfieldpath="/administrator/components/com_cardapio/models/fields">
+			<field name="id" type="item" multiple="true" label="COM_CARDAPIO_GENERIC_HEADING_ITEM"
+				description="COM_CARDAPIO_GENERIC_HEADING_ITEM" />
+			<field name="show_category" type="radio" default="0"
+				label="COM_CARDAPIO_GENERIC_SHOW_CATEGORY" description="COM_CARDAPIO_GENERIC_SHOW_CATEGORY">
+				<option value="0">Não</option>
+				<option value="1">Sim</option>
+			</field>
+			<field name="show_cardapio" type="radio" default="0"
+				label="COM_CARDAPIO_GENERIC_SHOW_CARDAPIO" description="COM_CARDAPIO_GENERIC_SHOW_CARDAPIO">
+				<option value="0">Não</option>
+				<option value="1">Sim</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

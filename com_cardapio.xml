@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<extension type="component" version="2.5" method="upgrade">
+    <name>Cardapio</name>    
+    <creationDate>19/11/2014</creationDate>
+    <author>Everaldo Reis</author>
+    <authorEmail>everaldo@rb2.com.br</authorEmail>
+    <authorUrl>www.rb2.com.br</authorUrl>
+    <copyright>Todos os direitos reservados.</copyright>
+    <license>Licensa comercial - A comercialização deste software cabe apenas ao Desenvolvedor ou um distribuidor autorizado.</license>
+    <version>0.0.9</version>
+    <description>
+        <![CDATA[
+            <h1>Cardápio</h1>
+            <p>Componente para gerenciamento de cardápio</p>
+        ]]>
+    </description>
+    
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    
+    <uinstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uinstall>
+    
+    <update>
+        <schemas>
+            <schempath type="mysql">sql/updates/mysql</schempath>
+        </schemas>
+    </update>
+    
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>cardapio.php</filename>
+        <filename>controller.php</filename>
+        <folder>assets</folder>
+        <folder>controllers</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+        <folder>helpers</folder>
+    </files>
+    
+    <administration>
+        <menu>COM_CARDAPIO_MENU_CARDAPIO</menu>
+        <submenu>
+            <menu view="items">COM_CARDAPIO_MENU_ITEMS</menu>
+            <menu view="cardapios">COM_CARDAPIO_MENU_CARDAPIOS</menu>
+            <menu view="categories">COM_CARDAPIO_MENU_CATEGORIES</menu>
+        </submenu>
+        
+        <files folder="admin">
+            <filename>index.html</filename>
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>cardapio.php</filename>
+            <filename>controller.php</filename>
+            <folder>models</folder>
+            <folder>views</folder>
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>assets</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+        </files>
+        
+        <languages folder="admin">
+            <language tag="pt-BR">language/pt-BR/pt-BR.com_cardapio.ini</language>
+            <language tag="pt-BR">language/pt-BR/pt-BR.com_cardapio.sys.ini</language>
+        </languages>
+    </administration>
+</extension>
