@@ -14,7 +14,7 @@ and open the template in the editor.
     <authorUrl>www.rb2.com.br</authorUrl>
     <copyright>Todos os direitos reservados.</copyright>
     <license>Licensa comercial - A comercialização deste software cabe apenas ao Desenvolvedor ou um distribuidor autorizado.</license>
-    <version>0.0.9</version>
+    <version>0.1.0</version>
     <description>
         <![CDATA[
             <h1>Worker Status</h1>
@@ -68,6 +68,8 @@ and open the template in the editor.
             <folder>models</folder>
             <folder>views</folder>
             <folder>controllers</folder>
+            <folder>language</folder>
+            <folder>lib</folder>
             <folder>helpers</folder>
             <folder>assets</folder>
             <folder>sql</folder>

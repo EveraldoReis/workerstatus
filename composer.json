@@ -1,0 +1,23 @@
+{
+    "name": "vendor/com-workerstatus",
+    "description": "Description of project com_workerstatus.",
+    "authors": [
+        {
+            "name": "webdev",
+            "email": "everaldo@rb2.com.br"
+        }
+    ],
+    "config": {
+        "vendor-dir": "lib/vendor/"
+    },
+    "include-path": ["lib/"],
+    "require": {
+        "smarty/smarty": "v3.1.21"
+    },
+    "autoload": {
+        "psr-4": {
+            "WorkerStatus\\": "lib/",
+            "Vendor\\Namespace\\": "lib/vendor/"
+        }
+    }
+}

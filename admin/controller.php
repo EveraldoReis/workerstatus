@@ -8,7 +8,7 @@
 
 defined('_JEXEC') or exit('Restricted access');
 
-jimport('joomla.application.component.controller');
+jimport('joomla.application.component.controlleradmin');
 
 class WorkerstatusController extends JController
 {
@@ -19,9 +19,10 @@ class WorkerstatusController extends JController
         $input->set('view', $input->getCmd('view', 'Workerstatuses'));
 
         parent::display($cacheable);
-        
+
         // Set the submenu
         WorkerstatusHelper::addSubmenu('messages');
+
     }
 
 }

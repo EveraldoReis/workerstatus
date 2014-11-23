@@ -3,10 +3,7 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 
-// import Joomla view library
-jimport('joomla.application.component.view');
-
-class WorkerstatusViewWorkerstatuses extends JView
+class WorkerstatusViewWorkerstatuses extends SmartyView
 {
 
     protected $persons;
@@ -43,7 +40,8 @@ class WorkerstatusViewWorkerstatuses extends JView
 
         $this->addToolBar();
 
-        parent::display($tpl);
+        $tpl = parent::display($tpl);
+        
     }
 
     /**

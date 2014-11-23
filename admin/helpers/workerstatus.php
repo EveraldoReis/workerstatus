@@ -16,10 +16,10 @@ abstract class WorkerstatusHelper
     {
         JSubMenuHelper::addEntry(JText::_('COM_WORKERSTATUS_SUBMENU_BUSINESSES'),
                 'index.php?option=com_workerstatus&view=businesses', $submenu == 'businesses');
-        JSubMenuHelper::addEntry(JText::_('COM_WORKERSTATUS_SUBMENU_SIZES'), 'index.php?option=com_workerstatus&view=sizes',
-                $submenu == 'sizes');
         JSubMenuHelper::addEntry(JText::_('COM_WORKERSTATUS_SUBMENU_PERSONS'), 'index.php?option=com_workerstatus&view=persons',
                 $submenu == 'persons');
+        JSubMenuHelper::addEntry(JText::_('COM_WORKERSTATUS_SUBMENU_WORKERSTATUSES'), 'index.php?option=com_workerstatus&view=workerstatuses',
+                $submenu == 'workerstatuses');
         // set some global property
         $document = JFactory::getDocument();
         if ($submenu == 'businesses')

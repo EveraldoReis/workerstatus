@@ -2,7 +2,7 @@
 
 defined('_JEXEC') or exit('Restricted access');
 
-jimport('joomla.application.component.view');
+
 
 class WorkerstatusViewSize extends Jview
 {

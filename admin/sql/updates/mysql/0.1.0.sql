@@ -1,0 +1,1 @@
+ALTER TABLE `#__workerstatus_businesses` DROP COLUMN `parent`;

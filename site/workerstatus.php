@@ -8,6 +8,10 @@
 
 defined('_JEXEC') or exit('Restricted access');
 
+require(JPATH_COMPONENT_ADMINISTRATOR . DS . 'lib' . DS . 'vendor' . DS . 'autoload.php');
+// require helper file
+JLoader::register('WorkerstatusView', JPATH_COMPONENT_ADMINISTRATOR . DS . 'lib' . DS . 'workerstatus' . DS . 'smartyview.php');
+
 jimport('joomla.application.component.controller');
 
 $controller = JController::getInstance('Workerstatus');

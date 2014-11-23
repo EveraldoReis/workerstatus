@@ -3,10 +3,10 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 
-// import Joomla view library
-jimport('joomla.application.component.view');
 
-class WorkerstatusViewSizes extends JView
+
+
+class WorkerstatusViewSizes extends SmartyView
 {
 
     protected $persons;

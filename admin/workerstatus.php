@@ -14,8 +14,10 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_workerstatus'))
     return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
+require(dirname(__FILE__) . DS . 'lib' . DS . 'vendor' . DS . 'autoload.php');
 // require helper file
 JLoader::register('WorkerstatusHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'workerstatus.php');
+JLoader::register('SmartyView', dirname(__FILE__) . DS . 'lib' . DS . 'workerstatus' . DS . 'smartyview.php');
 
 jimport('joomla.application.component.controller');
 

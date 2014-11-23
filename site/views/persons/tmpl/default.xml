@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_WORKERSTATUS_PERSONS_VIEW_DEFAULT_TITLE">
+		<message>
+                        <![CDATA[COM_WORKERSTATUS_PERSONS_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="request" addfieldpath="/administrator/components/com_workerstatus/models/fields">
+			<field name="business_id" type="Business" multiple="true" label="COM_WORKERSTATUS_GENERIC_HEADING_BUSINESS"
+				description="COM_WORKERSTATUS_GENERIC_HEADING_BUSINESS" />
+			<field name="workerstatus_id" type="Workerstatus" multiple="true" label="COM_WORKERSTATUS_GENERIC_HEADING_WORKERSTATUS"
+				description="COM_WORKERSTATUS_GENERIC_HEADING_WORKERSTATUS" />
+			<field name="show_business" type="radio" default="0"
+				label="COM_WORKERSTATUS_GENERIC_SHOW_BUSINESS" description="COM_WORKERSTATUS_GENERIC_SHOW_BUSINESS">
+				<option value="0">Não</option>
+				<option value="1">Sim</option>
+			</field>
+			<field name="show_workerstatus" type="radio" default="0"
+				label="COM_WORKERSTATUS_GENERIC_SHOW_WORKERSTATUS" description="COM_WORKERSTATUS_GENERIC_SHOW_WORKERSTATUS">
+				<option value="0">Não</option>
+				<option value="1">Sim</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>
