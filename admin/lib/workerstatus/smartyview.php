@@ -19,8 +19,8 @@ class SmartyView extends JView
         $this->smarty = new Smarty;
         $path = end($this->_path['template']);
         $this->smarty
-                ->setCacheDir(JPATH_CACHE)
-                ->setCompileDir(JPATH_COMPONENT)
+                ->setCacheDir(JPATH_CACHE . DS . 'com_workerstatus')
+                ->setCompileDir(JPATH_COMPONENT . DS . 'template_c')
                 ->setTemplateDir($path);
         $this->smarty->caching = true;
         $this->smarty->cache_lifetime = 30;

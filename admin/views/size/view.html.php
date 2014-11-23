@@ -4,7 +4,7 @@ defined('_JEXEC') or exit('Restricted access');
 
 
 
-class WorkerstatusViewSize extends Jview
+class WorkerstatusViewSize extends SmartyView
 {
 
     protected $canDo;
