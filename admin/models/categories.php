@@ -8,7 +8,7 @@ jimport('joomla.application.component.modellist');
 /**
  * HelloWorldList Model
  */
-class CardapioModelCategories extends JModelList
+class WorkerstatusModelBussinesses extends JModelList
 {
 
     //Add this handy array with database fields to search in
@@ -50,7 +50,7 @@ class CardapioModelCategories extends JModelList
      * @return	JTable	A database object
      * @since	1.6
      */
-    public function getTable($type = 'Category', $prefix = 'CardapioTable', $config = array())
+    public function getTable($type = 'Business', $prefix = 'WorkerstatusTable', $config = array())
     {
         return JTable::getInstance($type, $prefix, $config);
     }
@@ -67,7 +67,7 @@ class CardapioModelCategories extends JModelList
 
         //CHANGE THIS QUERY AS YOU NEED...
         $query->select('*')
-                ->from('#__cardapio_categories AS a')
+                ->from('#__workerstatus_businesses AS a')
                 ->order($db->escape($this->getState('list.ordering', 'a.cid')) . ' ' .
                         $db->escape($this->getState('list.direction', 'desc')));
 
@@ -167,7 +167,7 @@ class CardapioModelCategories extends JModelList
         $cids   = implode("','", $cid);
         $db     = JFactory::getDBO();
         $query  = $db->getQuery(true);
-        $query->update('#__cardapio_categories');
+        $query->update('#__workerstatus_businesses');
         $query->set(array($db->quoteName('state') . '=' . $value));
         $query->where(array(
             "id IN ('$cids')"));
@@ -180,7 +180,7 @@ class CardapioModelCategories extends JModelList
         $cids   = implode("','", $cid);
         $db     = JFactory::getDBO();
         $query  = $db->getQuery(true);
-        $query->delete('#__cardapio_categories');
+        $query->delete('#__workerstatus_businesses');
         $query->where(array(
             "id IN ('$cids')"));
         $db->setQuery($query);

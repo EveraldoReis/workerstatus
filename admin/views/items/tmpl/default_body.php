@@ -2,25 +2,25 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 ?>
-<?php foreach ($this->items as $i => $item): ?>
+<?php foreach ($this->persons as $i => $person): ?>
     <tr class="row<?php echo $i % 2; ?>">
         <td>
-            <?php echo JHtml::_('grid.id', $i, $item->id); ?>
+            <?php echo JHtml::_('grid.id', $i, $person->id); ?>
         </td>
-        <td><?php echo JHtml::_('jgrid.published', $item->state, $i, 'items.', true); ?></td>
+        <td><?php echo JHtml::_('jgrid.published', $person->state, $i, 'persons.', true); ?></td>
         <td>
-            <a href="<?php echo JRoute::_('index.php?option=com_cardapio&task=item.edit&id=' . (int) $item->id); ?>">
-                <?php echo $item->name; ?>
+            <a href="<?php echo JRoute::_('index.php?option=com_workerstatus&task=person.edit&id=' . (int) $person->id); ?>">
+                <?php echo $person->name; ?>
             </a>
         </td>
         <td>
-            <?php echo $item->cardapio_name; ?>
+            <?php echo $person->workerstatus_name; ?>
         </td>
         <td>
-            <?php echo $item->category_name; ?>
+            <?php echo $person->business_name; ?>
         </td>
         <td>
-            <?php echo $item->id; ?>
+            <?php echo $person->id; ?>
         </td>
     </tr>
 <?php endforeach; ?>

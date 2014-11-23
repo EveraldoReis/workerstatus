@@ -8,7 +8,7 @@
 
 jimport('joomla.application.component.controllerform');
 
-class CardapioControllerSize extends JControllerForm
+class WorkerstatusControllerSize extends JControllerForm
 {
 
     /**
@@ -39,7 +39,7 @@ class CardapioControllerSize extends JControllerForm
         if (!empty($id))
         {
             $user = JFactory::getUser();
-            return $user->authorise("core.edit", "com_cardapio.size." . $id);
+            return $user->authorise("core.edit", "com_workerstatus.size." . $id);
         }
     }
 

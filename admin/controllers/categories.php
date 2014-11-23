@@ -8,14 +8,14 @@
 
 jimport('joomla.application.component.controlleradmin');
 
-class CardapioControllerCategories extends JControllerAdmin
+class WorkerstatusControllerBussinesses extends JControllerAdmin
 {
 
     /**
      * Proxy for getModel.
      * @since	1.6
      */
-    public function getModel($name = 'Categories', $prefix = 'CardapioModel')
+    public function getModel($name = 'Bussinesses', $prefix = 'WorkerstatusModel')
     {
         $model = parent::getModel($name, $prefix, array(
                     'ignore_request' => true));

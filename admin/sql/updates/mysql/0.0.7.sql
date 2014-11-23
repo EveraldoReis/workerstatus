@@ -1,6 +1,6 @@
-CREATE TABLE IF NOT EXISTS `#__cardapio_prices` (
+CREATE TABLE IF NOT EXISTS `#__workerstatus_prices` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `item_id` int(11) NOT NULL,
+  `person_id` int(11) NOT NULL,
   `label` varchar(255),
   `value` varchar(255),
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_prices` (
   `access` int(10) unsigned NOT NULL DEFAULT '0',
   `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if category is featured.',
-  `language` char(7) NOT NULL COMMENT 'The language code for the category.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if business is featured.',
+  `language` char(7) NOT NULL COMMENT 'The language code for the business.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `params` text,
   `rules` text,

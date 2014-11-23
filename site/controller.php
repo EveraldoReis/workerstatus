@@ -10,7 +10,7 @@ defined('_JEXEC') or exit('Restricted access');
 
 jimport('joomla.application.component.controller');
 
-class CardapioController extends JController
+class WorkerstatusController extends JController
 {
     
 }

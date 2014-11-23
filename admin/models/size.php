@@ -9,13 +9,13 @@ jimport('joomla.application.component.modeladmin');
 /**
  * HelloWorld Model
  */
-class CardapioModelSize extends JModelAdmin
+class WorkerstatusModelSize extends JModelAdmin
 {
 
     /**
-     * @var object item
+     * @var object person
      */
-    protected $item;
+    protected $person;
 
     /**
      * Method to auto-populate the model state.
@@ -38,7 +38,7 @@ class CardapioModelSize extends JModelAdmin
         $this->setState('size.id', $id);
 
         // Load the parameters.
-        $params = JComponentHelper::getParams('com_cardapio');
+        $params = JComponentHelper::getParams('com_workerstatus');
         $this->setState('params', $params);
         parent::populateState();
     }
@@ -52,7 +52,7 @@ class CardapioModelSize extends JModelAdmin
      * @return      JTable  A database object
      * @since       2.5
      */
-    public function getTable($type = 'Size', $prefix = 'CardapioTable', $config = array())
+    public function getTable($type = 'Size', $prefix = 'WorkerstatusTable', $config = array())
     {
         return JTable::getInstance($type, $prefix, $config);
     }
@@ -68,7 +68,7 @@ class CardapioModelSize extends JModelAdmin
     public function getForm($data = array(), $loadData = true)
     {
         // Get the form.
-        $form = $this->loadForm('com_cardapio.size', 'size',
+        $form = $this->loadForm('com_workerstatus.size', 'size',
                 array(
             'control'   => 'jform',
             'load_data' => $loadData));
@@ -86,7 +86,7 @@ class CardapioModelSize extends JModelAdmin
      */
     public function getScript()
     {
-        return 'administrator/components/com_cardapio/models/forms/size.js';
+        return 'administrator/components/com_workerstatus/models/forms/size.js';
     }
 
     /**
@@ -98,10 +98,10 @@ class CardapioModelSize extends JModelAdmin
     protected function loadFormData()
     {
         // Check the session for previously entered form data.
-        $data = JFactory::getApplication()->getUserState('com_cardapio.edit.size.data', array());
+        $data = JFactory::getApplication()->getUserState('com_workerstatus.edit.size.data', array());
         if (empty($data))
         {
-            $data = $this->getItem();
+            $data = $this->getPerson();
         }
         return $data;
     }
@@ -110,16 +110,16 @@ class CardapioModelSize extends JModelAdmin
      * Get the size
      * @return object The size to be displayed to the user
      */
-    public function getItem()
+    public function getPerson()
     {
-        if (!isset($this->item))
+        if (!isset($this->person))
         {
             $id         = $this->getState('size.id');
             $this->_db->setQuery($this->_db->getQuery(true)
-                            ->from('#__cardapio_sizes as h')
+                            ->from('#__workerstatus_sizes as h')
                             ->select('*')
                             ->where('h.id=' . (int) $id));
-            if (!$this->item = $this->_db->loadObject())
+            if (!$this->person = $this->_db->loadObject())
             {
                 $this->setError($this->_db->getError());
             }
@@ -128,17 +128,17 @@ class CardapioModelSize extends JModelAdmin
                 // Load the JSON string
                 $params             = new JRegistry;
                 // loadJSON is @deprecated    12.1  Use loadString passing JSON as the format instead.
-                //$params->loadString($this->item->params, 'JSON');
-                $params->loadJSON($this->item->params);
-                $this->item->params = $params;
+                //$params->loadString($this->person->params, 'JSON');
+                $params->loadJSON($this->person->params);
+                $this->person->params = $params;
 
-                // Merge global params with item params
+                // Merge global params with person params
                 $params             = clone $this->getState('params');
-                $params->merge($this->item->params);
-                $this->item->params = $params;
+                $params->merge($this->person->params);
+                $this->person->params = $params;
             }
         }
-        return parent::getItem();
+        return parent::getPerson();
     }
 
     /**
@@ -149,7 +149,7 @@ class CardapioModelSize extends JModelAdmin
         if (!empty($record->id))
         {
             $user = JFactory::getUser();
-            return $user->authorise("core.delete", "com_cardapio.size." . $record->id);
+            return $user->authorise("core.delete", "com_workerstatus.size." . $record->id);
         }
     }
 

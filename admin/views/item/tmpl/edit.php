@@ -6,17 +6,17 @@ JHtml::_('behavior.formvalidation');
 $params = $this->form->getFieldsets('params');
 ?>
 
-<form enctype="multipart/form-data" action="<?php echo JRoute::_('index.php?option=com_cardapio&layout=edit&id=' . (int) $this->item->id); ?>"
-      method="post" name="adminForm" id="cardapio-form" class="form-validate">
+<form enctype="multipart/form-data" action="<?php echo JRoute::_('index.php?option=com_workerstatus&layout=edit&id=' . (int) $this->person->id); ?>"
+      method="post" name="adminForm" id="workerstatus-form" class="form-validate">
 
     <div class="width-60 fltlft">
         <fieldset class="adminform">
-            <legend><?php echo JText::_('COM_CARDAPIO_CARDAPIO_DETAILS'); ?></legend>
+            <legend><?php echo JText::_('COM_WORKERSTATUS_WORKERSTATUS_DETAILS'); ?></legend>
             <ul class="adminformlist">
                 <?php foreach ($this->form->getFieldset('details') as $field): ?>
                     <li><?php
                         echo $field->label;
-                        echo ($field->name == 'jform[complex_price]') ? $field->getInput($this->item) : $field->input;
+                        echo ($field->name == 'jform[complex_price]') ? $field->getInput($this->person) : $field->input;
                         ?></li>
                 <?php endforeach; ?>
             </ul>
@@ -25,7 +25,7 @@ $params = $this->form->getFieldsets('params');
 
     <div class="width-40 fltrt">
         <?php
-        echo JHtml::_('sliders.start', 'item-slider');
+        echo JHtml::_('sliders.start', 'person-slider');
         foreach ($params as $name => $fieldset):
             echo JHtml::_('sliders.panel', JText::_($fieldset->label), $name . '-params');
             if (isset($fieldset->description) && trim($fieldset->description)):
@@ -41,7 +41,7 @@ $params = $this->form->getFieldsets('params');
             </fieldset>
         <?php endforeach; ?>
         <?php
-        echo JHtml::_('sliders.panel', JText::_('COM_CARDAPIO_GROUP_LABEL_PUBLISHING_DETAILS'), 'publishing-details');
+        echo JHtml::_('sliders.panel', JText::_('COM_WORKERSTATUS_GROUP_LABEL_PUBLISHING_DETAILS'), 'publishing-details');
         ?>
         <fieldset class="panelform">
             <ul class="adminformlist">
@@ -71,13 +71,13 @@ $params = $this->form->getFieldsets('params');
     <?php if ($this->canDo->get('core.admin')): ?>
         <div class="width-100 fltlft">
             <?php
-            echo JHtml::_('sliders.start', 'permissions-sliders-' . $this->item->id,
+            echo JHtml::_('sliders.start', 'permissions-sliders-' . $this->person->id,
                     array(
                 'useCookie' => 1));
             ?>
 
             <?php
-            echo JHtml::_('sliders.panel', JText::_('COM_CARDAPIO_FIELDSET_RULES'), 'access-rules');
+            echo JHtml::_('sliders.panel', JText::_('COM_WORKERSTATUS_FIELDSET_RULES'), 'access-rules');
             ?>
             <fieldset class="panelform">
                 <?php echo $this->form->getLabel('rules'); ?>
@@ -91,7 +91,7 @@ $params = $this->form->getFieldsets('params');
     <!-- end ACL definition-->
 
     <div>
-        <input type="hidden" name="task" value="item.edit" />
+        <input type="hidden" name="task" value="person.edit" />
         <?php echo JHtml::_('form.token'); ?>
     </div>
 </form>
@@ -111,7 +111,7 @@ $params = $this->form->getFieldsets('params');
                 var msg = new Array();
                 msg.push('Invalid input, please verify again!');
                 if ($('title').hasClass('invalid')) {
-                    msg.push('<?php echo JText::_('COM_CARDAPIO_ERROR_SCHEDULE_TITLE_IS_REQUIRED') ?>');
+                    msg.push('<?php echo JText::_('COM_WORKERSTATUS_ERROR_SCHEDULE_TITLE_IS_REQUIRED') ?>');
                 }
                 alert(msg.join('\n'));
             }

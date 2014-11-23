@@ -9,17 +9,17 @@
 defined('_JEXEC') or exit('Restricted access');
 
 // Access check: is this user allowed to access the backend of this component?
-if (!JFactory::getUser()->authorise('core.manage', 'com_cardapio'))
+if (!JFactory::getUser()->authorise('core.manage', 'com_workerstatus'))
 {
     return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
 // require helper file
-JLoader::register('CardapioHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'cardapio.php');
+JLoader::register('WorkerstatusHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'workerstatus.php');
 
 jimport('joomla.application.component.controller');
 
-$controller = JController::getInstance('Cardapio');
+$controller = JController::getInstance('Workerstatus');
 
 $input = JFactory::getApplication()->input;
 

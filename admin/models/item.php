@@ -9,13 +9,13 @@ jimport('joomla.application.component.modeladmin');
 /**
  * HelloWorld Model
  */
-class CardapioModelItem extends JModelAdmin
+class WorkerstatusModelPerson extends JModelAdmin
 {
 
     /**
-     * @var object item
+     * @var object person
      */
-    protected $item;
+    protected $person;
 
     /**
      * 
@@ -35,7 +35,7 @@ class CardapioModelItem extends JModelAdmin
         $table->complex_price = json_encode($table->complex_price);
         $table->params        = json_encode($table->params);
         $table->rules         = json_encode($table->rules);
-        $table->price_type = JFactory::getApplication()->getUserState('com_cardapio.price_type', 0);;
+        $table->price_type = JFactory::getApplication()->getUserState('com_workerstatus.price_type', 0);;
     }
 
     /**
@@ -53,13 +53,13 @@ class CardapioModelItem extends JModelAdmin
     protected function populateState()
     {
         $app   = JFactory::getApplication();
-        // Get the item id
+        // Get the person id
         $input = JFactory::getApplication()->input;
         $id    = $input->getInt('id');
-        $this->setState('item.id', $id);
+        $this->setState('person.id', $id);
 
         // Load the parameters.
-        $params = JComponentHelper::getParams('com_cardapio');
+        $params = JComponentHelper::getParams('com_workerstatus');
         $this->setState('params', $params);
         parent::populateState();
     }
@@ -73,7 +73,7 @@ class CardapioModelItem extends JModelAdmin
      * @return      JTable  A database object
      * @since       2.5
      */
-    public function getTable($type = 'Item', $prefix = 'CardapioTable', $config = array())
+    public function getTable($type = 'Person', $prefix = 'WorkerstatusTable', $config = array())
     {
         return JTable::getInstance($type, $prefix, $config);
     }
@@ -89,7 +89,7 @@ class CardapioModelItem extends JModelAdmin
     public function getForm($data = array(), $loadData = true)
     {
         // Get the form.
-        $form = $this->loadForm('com_cardapio.item', 'item',
+        $form = $this->loadForm('com_workerstatus.person', 'person',
                 array(
             'control'   => 'jform',
             'load_data' => $loadData));
@@ -107,7 +107,7 @@ class CardapioModelItem extends JModelAdmin
      */
     public function getScript()
     {
-        return 'administrator/components/com_cardapio/models/forms/item.js';
+        return 'administrator/components/com_workerstatus/models/forms/person.js';
     }
 
     /**
@@ -119,28 +119,28 @@ class CardapioModelItem extends JModelAdmin
     protected function loadFormData()
     {
         // Check the session for previously entered form data.
-        $data = JFactory::getApplication()->getUserState('com_cardapio.edit.item.data', array());
+        $data = JFactory::getApplication()->getUserState('com_workerstatus.edit.person.data', array());
         if (empty($data))
         {
-            $data = $this->getItem();
+            $data = $this->getPerson();
         }
         return $data;
     }
 
     /**
-     * Get the item
-     * @return object The item to be displayed to the user
+     * Get the person
+     * @return object The person to be displayed to the user
      */
-    public function getItem()
+    public function getPerson()
     {
-        if (!isset($this->item))
+        if (!isset($this->person))
         {
-            $id         = $this->getState('item.id');
+            $id         = $this->getState('person.id');
             $this->_db->setQuery($this->_db->getQuery(true)
-                            ->from('#__cardapio_items as h')
+                            ->from('#__workerstatus_persons as h')
                             ->select('*')
                             ->where('h.id=' . (int) $id));
-            if (!$this->item = $this->_db->loadObject())
+            if (!$this->person = $this->_db->loadObject())
             {
                 $this->setError($this->_db->getError());
             }
@@ -149,17 +149,17 @@ class CardapioModelItem extends JModelAdmin
                 // Load the JSON string
                 $params             = new JRegistry;
                 // loadJSON is @deprecated    12.1  Use loadString passing JSON as the format instead.
-                //$params->loadString($this->item->params, 'JSON');
-                $params->loadJSON($this->item->params);
-                $this->item->params = $params;
+                //$params->loadString($this->person->params, 'JSON');
+                $params->loadJSON($this->person->params);
+                $this->person->params = $params;
 
-                // Merge global params with item params
+                // Merge global params with person params
                 $params             = clone $this->getState('params');
-                $params->merge($this->item->params);
-                $this->item->params = $params;
+                $params->merge($this->person->params);
+                $this->person->params = $params;
             }
         }
-        return parent::getItem();
+        return parent::getPerson();
     }
 
     function save($data)
@@ -170,7 +170,7 @@ class CardapioModelItem extends JModelAdmin
         $db         = JFactory::getDbo();
         if ($data['id'])
         {
-            $db->setQuery('DELETE FROM #__cardapio_prices WHERE item_id = ' . ($data['id'] ? $data['id'] : $db->insertid()));
+            $db->setQuery('DELETE FROM #__workerstatus_prices WHERE person_id = ' . ($data['id'] ? $data['id'] : $db->insertid()));
 
             $db->query();
         }
@@ -178,7 +178,7 @@ class CardapioModelItem extends JModelAdmin
         {
             if ('' == trim($label))
                 continue;
-            $db->setQuery('INSERT IGNORE INTO #__cardapio_prices (`item_id`,`label`,`value`) VALUES ("' . ($data['id'] ? $data['id'] : $lastinsert) . '", "' . $data['complex_price']['label'][$k] . '", "' . $data['complex_price']['value'][$k] . '")');
+            $db->setQuery('INSERT IGNORE INTO #__workerstatus_prices (`person_id`,`label`,`value`) VALUES ("' . ($data['id'] ? $data['id'] : $lastinsert) . '", "' . $data['complex_price']['label'][$k] . '", "' . $data['complex_price']['value'][$k] . '")');
 
             $db->query();
         }
@@ -187,14 +187,14 @@ class CardapioModelItem extends JModelAdmin
     }
 
     /**
-     * Method to check if it's OK to delete a item. Overwrites JModelAdmin::canDelete
+     * Method to check if it's OK to delete a person. Overwrites JModelAdmin::canDelete
      */
     protected function canDelete($record)
     {
         if (!empty($record->id))
         {
             $user = JFactory::getUser();
-            return $user->authorise("core.delete", "com_cardapio.item." . $record->id);
+            return $user->authorise("core.delete", "com_workerstatus.person." . $record->id);
         }
     }
 

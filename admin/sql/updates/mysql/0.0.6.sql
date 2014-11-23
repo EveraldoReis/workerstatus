@@ -1,5 +1,5 @@
-ALTER TABLE `#__cardapio_categories` ADD COLUMN `params` text;
+ALTER TABLE `#__workerstatus_businesses` ADD COLUMN `params` text;
 
-ALTER TABLE `#__cardapio_items` ADD COLUMN `params` text;
+ALTER TABLE `#__workerstatus_persons` ADD COLUMN `params` text;
 
-ALTER TABLE `#__cardapio_cardapios` ADD COLUMN `params` text;
+ALTER TABLE `#__workerstatus_workerstatuses` ADD COLUMN `params` text;

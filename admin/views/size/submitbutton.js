@@ -28,7 +28,7 @@ Joomla.submitbutton = function (task)
         }
         else
         {
-            alert(Joomla.JText._('COM_CARDAPION_CATEGORY_ERROR_UNACCEPTABLE',
+            alert(Joomla.JText._('COM_WORKERSTATUSN_BUSINESS_ERROR_UNACCEPTABLE',
                     'Some values are unacceptable'));
             return false;
         }

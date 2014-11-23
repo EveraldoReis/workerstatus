@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `#__cardapio_categories` (
+CREATE TABLE IF NOT EXISTS `#__workerstatus_businesses` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(80) NOT NULL UNIQUE,
   `image` varchar(255) DEFAULT 'noimage.jpg',
@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_categories` (
   `access` int(10) unsigned NOT NULL DEFAULT '0',
   `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if category is featured.',
-  `language` char(7) NOT NULL COMMENT 'The language code for the category.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if business is featured.',
+  `language` char(7) NOT NULL COMMENT 'The language code for the business.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `params` text,
   `rules` text,
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_categories` (
   KEY `jr_listing_count` (`catid`,`state`,`access`,`publish_up`,`publish_down`)
 );
 
-CREATE TABLE IF NOT EXISTS `#__cardapio_cardapios` (
+CREATE TABLE IF NOT EXISTS `#__workerstatus_workerstatuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(80) NOT NULL UNIQUE,
   `image` varchar(255) DEFAULT 'noimage.jpg',
@@ -79,8 +79,8 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_cardapios` (
   `access` int(10) unsigned NOT NULL DEFAULT '0',
   `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if category is featured.',
-  `language` char(7) NOT NULL COMMENT 'The language code for the category.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if business is featured.',
+  `language` char(7) NOT NULL COMMENT 'The language code for the business.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `params` text,
   `rules` text,
@@ -100,10 +100,10 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_cardapios` (
   KEY `jr_listing_count` (`catid`,`state`,`access`,`publish_up`,`publish_down`)
 );
 
-CREATE TABLE IF NOT EXISTS `#__cardapio_items` (
+CREATE TABLE IF NOT EXISTS `#__workerstatus_persons` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `category_id` int(11) NOT NULL,
-  `cardapio_id` int(11) NOT NULL,
+  `business_id` int(11) NOT NULL,
+  `workerstatus_id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL UNIQUE,
   `image` varchar(255),
   `ingredients` text,
@@ -137,8 +137,8 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_items` (
   `access` int(10) unsigned NOT NULL DEFAULT '0',
   `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if category is featured.',
-  `language` char(7) NOT NULL COMMENT 'The language code for the category.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if business is featured.',
+  `language` char(7) NOT NULL COMMENT 'The language code for the business.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `params` text,
   `rules` text,
@@ -158,9 +158,9 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_items` (
   KEY `jr_listing_count` (`catid`,`state`,`access`,`publish_up`,`publish_down`)
 );
 
-CREATE TABLE IF NOT EXISTS `#__cardapio_prices` (
+CREATE TABLE IF NOT EXISTS `#__workerstatus_prices` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `item_id` int(11) NOT NULL,
+  `person_id` int(11) NOT NULL,
   `label` varchar(255),
   `value` varchar(255),
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
@@ -189,12 +189,12 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_prices` (
   `access` int(10) unsigned NOT NULL DEFAULT '0',
   `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if category is featured.',
-  `language` char(7) NOT NULL COMMENT 'The language code for the category.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if business is featured.',
+  `language` char(7) NOT NULL COMMENT 'The language code for the business.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `params` text,
   `rules` text,
-  UNIQUE(`item_id`, `label`),
+  UNIQUE(`person_id`, `label`),
   KEY `idx_access` (`access`),
   KEY `idx_checkout` (`checked_out`),
   KEY `idx_state` (`state`),
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_prices` (
   KEY `jr_ordering` (`ordering`),
   KEY `jr_listing_count` (`state`,`access`,`publish_up`,`publish_down`)
 );
-CREATE TABLE IF NOT EXISTS `#__cardapio_sizes` (
+CREATE TABLE IF NOT EXISTS `#__workerstatus_sizes` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(255),
   `image` varchar(255),
@@ -238,8 +238,8 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_sizes` (
   `access` int(10) unsigned NOT NULL DEFAULT '0',
   `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if category is featured.',
-  `language` char(7) NOT NULL COMMENT 'The language code for the category.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if business is featured.',
+  `language` char(7) NOT NULL COMMENT 'The language code for the business.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `params` text,
   `rules` text,
@@ -257,4 +257,4 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_sizes` (
   KEY `jr_listing_count` (`state`,`access`,`publish_up`,`publish_down`)
 );
 
-ALTER TABLE `#__cardapio_categories` ADD COLUMN `parent` int(11) AFTER `name`;
+ALTER TABLE `#__workerstatus_businesses` ADD COLUMN `parent` int(11) AFTER `name`;

@@ -8,7 +8,7 @@
 
 jimport('joomla.application.component.controllerform');
 
-class CardapioControllerCardapio extends JControllerForm
+class WorkerstatusControllerWorkerstatus extends JControllerForm
 {
 
     /**
@@ -39,7 +39,7 @@ class CardapioControllerCardapio extends JControllerForm
         if (!empty($id))
         {
             $user = JFactory::getUser();
-            return $user->authorise("core.edit", "com_cardapio.cardapio." . $id);
+            return $user->authorise("core.edit", "com_workerstatus.workerstatus." . $id);
         }
     }
 

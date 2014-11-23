@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `#__cardapio_sizes` (
+CREATE TABLE IF NOT EXISTS `#__workerstatus_sizes` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(255),
   `image` varchar(255),
@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_sizes` (
   `access` int(10) unsigned NOT NULL DEFAULT '0',
   `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if category is featured.',
-  `language` char(7) NOT NULL COMMENT 'The language code for the category.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if business is featured.',
+  `language` char(7) NOT NULL COMMENT 'The language code for the business.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `params` text,
   `rules` text,
@@ -47,4 +47,4 @@ CREATE TABLE IF NOT EXISTS `#__cardapio_sizes` (
   KEY `jr_listing_count` (`state`,`access`,`publish_up`,`publish_down`)
 );
 
-ALTER TABLE `#__cardapio_categories` ADD COLUMN `parent` int(11) AFTER `name`;
+ALTER TABLE `#__workerstatus_businesses` ADD COLUMN `parent` int(11) AFTER `name`;

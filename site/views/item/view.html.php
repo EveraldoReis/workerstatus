@@ -8,7 +8,7 @@
 
 jimport('joomla.application.component.view');
 
-class CardapioViewItem extends JView
+class WorkerstatusViewPerson extends JView
 {
 
     public $labels = array();
@@ -16,7 +16,7 @@ class CardapioViewItem extends JView
     function display($tpl = null)
     {
 
-        $this->items      = $this->get('Items');
+        $this->persons      = $this->get('Persons');
         $this->pagination = $this->get('Pagination');
         $this->sizes = $this->get('Sizes');
 

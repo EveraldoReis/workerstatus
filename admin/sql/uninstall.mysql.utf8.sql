@@ -1,5 +1,5 @@
-DROP TABLE `#__cardapio_categories`;
+DROP TABLE `#__workerstatus_businesses`;
 
-DROP TABLE `#__cardapio_cardapios`;
+DROP TABLE `#__workerstatus_workerstatuses`;
 
-DROP TABLE `#__cardapio_items`;
+DROP TABLE `#__workerstatus_persons`;

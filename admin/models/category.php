@@ -9,13 +9,13 @@ jimport('joomla.application.component.modeladmin');
 /**
  * HelloWorld Model
  */
-class CardapioModelCategory extends JModelAdmin
+class WorkerstatusModelBusiness extends JModelAdmin
 {
 
     /**
-     * @var object item
+     * @var object person
      */
-    protected $item;
+    protected $person;
 
     /**
      * Method to auto-populate the model state.
@@ -32,13 +32,13 @@ class CardapioModelCategory extends JModelAdmin
     protected function populateState()
     {
         $app   = JFactory::getApplication();
-        // Get the category id
+        // Get the business id
         $input = JFactory::getApplication()->input;
         $id    = $input->getInt('id');
-        $this->setState('category.id', $id);
+        $this->setState('business.id', $id);
 
         // Load the parameters.
-        $params = JComponentHelper::getParams('com_cardapio');
+        $params = JComponentHelper::getParams('com_workerstatus');
         $this->setState('params', $params);
         parent::populateState();
     }
@@ -52,7 +52,7 @@ class CardapioModelCategory extends JModelAdmin
      * @return      JTable  A database object
      * @since       2.5
      */
-    public function getTable($type = 'Category', $prefix = 'CardapioTable', $config = array())
+    public function getTable($type = 'Business', $prefix = 'WorkerstatusTable', $config = array())
     {
         return JTable::getInstance($type, $prefix, $config);
     }
@@ -68,7 +68,7 @@ class CardapioModelCategory extends JModelAdmin
     public function getForm($data = array(), $loadData = true)
     {
         // Get the form.
-        $form = $this->loadForm('com_cardapio.category', 'category',
+        $form = $this->loadForm('com_workerstatus.business', 'business',
                 array(
             'control'   => 'jform',
             'load_data' => $loadData));
@@ -86,7 +86,7 @@ class CardapioModelCategory extends JModelAdmin
      */
     public function getScript()
     {
-        return 'administrator/components/com_cardapio/models/forms/category.js';
+        return 'administrator/components/com_workerstatus/models/forms/business.js';
     }
 
     /**
@@ -98,28 +98,28 @@ class CardapioModelCategory extends JModelAdmin
     protected function loadFormData()
     {
         // Check the session for previously entered form data.
-        $data = JFactory::getApplication()->getUserState('com_cardapio.edit.category.data', array());
+        $data = JFactory::getApplication()->getUserState('com_workerstatus.edit.business.data', array());
         if (empty($data))
         {
-            $data = $this->getItem();
+            $data = $this->getPerson();
         }
         return $data;
     }
 
     /**
-     * Get the category
-     * @return object The category to be displayed to the user
+     * Get the business
+     * @return object The business to be displayed to the user
      */
-    public function getItem()
+    public function getPerson()
     {
-        if (!isset($this->item))
+        if (!isset($this->person))
         {
-            $id         = $this->getState('category.id');
+            $id         = $this->getState('business.id');
             $this->_db->setQuery($this->_db->getQuery(true)
-                            ->from('#__cardapio_categories as h')
+                            ->from('#__workerstatus_businesses as h')
                             ->select('*')
                             ->where('h.id=' . (int) $id));
-            if (!$this->item = $this->_db->loadObject())
+            if (!$this->person = $this->_db->loadObject())
             {
                 $this->setError($this->_db->getError());
             }
@@ -128,28 +128,28 @@ class CardapioModelCategory extends JModelAdmin
                 // Load the JSON string
                 $params             = new JRegistry;
                 // loadJSON is @deprecated    12.1  Use loadString passing JSON as the format instead.
-                //$params->loadString($this->item->params, 'JSON');
-                $params->loadJSON($this->item->params);
-                $this->item->params = $params;
+                //$params->loadString($this->person->params, 'JSON');
+                $params->loadJSON($this->person->params);
+                $this->person->params = $params;
 
-                // Merge global params with item params
+                // Merge global params with person params
                 $params             = clone $this->getState('params');
-                $params->merge($this->item->params);
-                $this->item->params = $params;
+                $params->merge($this->person->params);
+                $this->person->params = $params;
             }
         }
-        return parent::getItem();
+        return parent::getPerson();
     }
 
     /**
-     * Method to check if it's OK to delete a category. Overwrites JModelAdmin::canDelete
+     * Method to check if it's OK to delete a business. Overwrites JModelAdmin::canDelete
      */
     protected function canDelete($record)
     {
         if (!empty($record->id))
         {
             $user = JFactory::getUser();
-            return $user->authorise("core.delete", "com_cardapio.category." . $record->id);
+            return $user->authorise("core.delete", "com_workerstatus.business." . $record->id);
         }
     }
 

@@ -8,7 +8,7 @@
 
 jimport('joomla.application.component.controllerform');
 
-class CardapioControllerItem extends JControllerForm
+class WorkerstatusControllerPerson extends JControllerForm
 {
     
     function __construct($config = array())
@@ -46,30 +46,30 @@ class CardapioControllerItem extends JControllerForm
         if (!empty($id))
         {
             $user = JFactory::getUser();
-            return $user->authorise("core.edit", "com_cardapio.item." . $id);
+            return $user->authorise("core.edit", "com_workerstatus.person." . $id);
         }
     }
 
     function reload()
     {
         $input = JFactory::getApplication()->input->get('jform', array(), 'ARRAY');
-        JFactory::getApplication()->setUserState('com_cardapio.price_type', $input['price_type']);
-        JFactory::getApplication()->setUserState('com_cardapio.item.data', $input);
-        header('location: index.php?option=com_cardapio&layout=edit&view=item&price_type='.$input['price_type']);
+        JFactory::getApplication()->setUserState('com_workerstatus.price_type', $input['price_type']);
+        JFactory::getApplication()->setUserState('com_workerstatus.person.data', $input);
+        header('location: index.php?option=com_workerstatus&layout=edit&view=person&price_type='.$input['price_type']);
     }
 
     function reset_price_type()
     {
         $input = JFactory::getApplication()->input->get('jform', array(), 'ARRAY');
-        JFactory::getApplication()->setUserState('com_cardapio.price_type', 0);
-        JFactory::getApplication()->setUserState('com_cardapio.item.data', $input);
-        header('location: index.php?option=com_cardapio&layout=edit&view=item');
+        JFactory::getApplication()->setUserState('com_workerstatus.price_type', 0);
+        JFactory::getApplication()->setUserState('com_workerstatus.person.data', $input);
+        header('location: index.php?option=com_workerstatus&layout=edit&view=person');
     }
 
     function cancel($key = null)
     {
         parent::cancel($key);
-        JFactory::getApplication()->setUserState('com_cardapio.price_type', 0);
+        JFactory::getApplication()->setUserState('com_workerstatus.price_type', 0);
     }
 
 }

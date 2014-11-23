@@ -28,7 +28,7 @@ class JFormFieldSize extends JFormFieldList
                 $db = JFactory::getDBO();
                 $query = $db->getQuery(true);
                 $query->select('id,name');
-                $query->from('#__cardapio_sizes');
+                $query->from('#__workerstatus_sizes');
                 $db->setQuery((string)$query);
                 $db->query();
                 $messages = $db->loadObjectList();

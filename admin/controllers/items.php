@@ -8,20 +8,20 @@
 
 jimport('joomla.application.component.controlleradmin');
 
-class CardapioControllerItems extends JControllerAdmin
+class WorkerstatusControllerPersons extends JControllerAdmin
 {
 
     function __construct($config = array())
     {
         parent::__construct($config);
-        JFactory::getApplication()->setUserState('com_cardapio.price_type', 0);
-        JFactory::getApplication()->setUserState('com_cardapio.item.data', array());
+        JFactory::getApplication()->setUserState('com_workerstatus.price_type', 0);
+        JFactory::getApplication()->setUserState('com_workerstatus.person.data', array());
     }
     /**
      * Proxy for getModel.
      * @since	1.6
      */
-    public function getModel($name = 'Items', $prefix = 'CardapioModel')
+    public function getModel($name = 'Persons', $prefix = 'WorkerstatusModel')
     {
         $model = parent::getModel($name, $prefix, array(
                     'ignore_request' => true));

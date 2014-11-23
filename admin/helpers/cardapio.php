@@ -6,7 +6,7 @@ defined('_JEXEC') or die;
 /**
  * HelloWorld component helper.
  */
-abstract class CardapioHelper
+abstract class WorkerstatusHelper
 {
 
     /**
@@ -14,47 +14,47 @@ abstract class CardapioHelper
      */
     public static function addSubmenu($submenu)
     {
-        JSubMenuHelper::addEntry(JText::_('COM_CARDAPIO_SUBMENU_CATEGORIES'),
-                'index.php?option=com_cardapio&view=categories', $submenu == 'categories');
-        JSubMenuHelper::addEntry(JText::_('COM_CARDAPIO_SUBMENU_SIZES'), 'index.php?option=com_cardapio&view=sizes',
+        JSubMenuHelper::addEntry(JText::_('COM_WORKERSTATUS_SUBMENU_BUSINESSES'),
+                'index.php?option=com_workerstatus&view=businesses', $submenu == 'businesses');
+        JSubMenuHelper::addEntry(JText::_('COM_WORKERSTATUS_SUBMENU_SIZES'), 'index.php?option=com_workerstatus&view=sizes',
                 $submenu == 'sizes');
-        JSubMenuHelper::addEntry(JText::_('COM_CARDAPIO_SUBMENU_ITEMS'), 'index.php?option=com_cardapio&view=items',
-                $submenu == 'items');
+        JSubMenuHelper::addEntry(JText::_('COM_WORKERSTATUS_SUBMENU_PERSONS'), 'index.php?option=com_workerstatus&view=persons',
+                $submenu == 'persons');
         // set some global property
         $document = JFactory::getDocument();
-        if ($submenu == 'categories')
+        if ($submenu == 'businesses')
         {
-            $document->setTitle(JText::_('COM_CARDAPIO_ADMINISTRATION_CATEGORIES'));
+            $document->setTitle(JText::_('COM_WORKERSTATUS_ADMINISTRATION_BUSINESSES'));
         }
-        if ($submenu == 'items')
+        if ($submenu == 'persons')
         {
-            $document->setTitle(JText::_('COM_CARDAPIO_ADMINISTRATION_ITEMS'));
+            $document->setTitle(JText::_('COM_WORKERSTATUS_ADMINISTRATION_PERSONS'));
         }
         if ($submenu == 'sizes')
         {
-            $document->setTitle(JText::_('COM_CARDAPIO_ADMINISTRATION_SIZES'));
+            $document->setTitle(JText::_('COM_WORKERSTATUS_ADMINISTRATION_SIZES'));
         }
     }
 
     /**
      * Get the actions
      */
-    public static function getActions($categoryId = 0)
+    public static function getActions($businessId = 0)
     {
         jimport('joomla.access.access');
         $user   = JFactory::getUser();
         $result = new JObject;
 
-        if (empty($categoryId))
+        if (empty($businessId))
         {
-            $assetName = 'com_cardapio';
+            $assetName = 'com_workerstatus';
         }
         else
         {
-            $assetName = 'com_cardapio.category.' . (int) $categoryId;
+            $assetName = 'com_workerstatus.business.' . (int) $businessId;
         }
 
-        $actions = JAccess::getActions('com_cardapio', 'component');
+        $actions = JAccess::getActions('com_workerstatus', 'component');
 
         foreach ($actions as $action)
         {

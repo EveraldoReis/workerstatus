@@ -7,7 +7,7 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.multiselect');
 
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_cardapio&view=sizes'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_workerstatus&view=sizes'); ?>" method="post" name="adminForm" id="adminForm">
     <?php echo $this->loadTemplate('filter'); ?>
     <table class="adminlist">
         <thead><?php echo $this->loadTemplate('head'); ?></thead>

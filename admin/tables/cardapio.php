@@ -9,7 +9,7 @@ jimport('joomla.database.table');
 /**
  * Hello Table class
  */
-class CardapioTableCardapio extends JTable
+class WorkerstatusTableWorkerstatus extends JTable
 {
 
     /**
@@ -19,7 +19,7 @@ class CardapioTableCardapio extends JTable
      */
     function __construct(&$db)
     {
-        parent::__construct('#__cardapio_cardapios', 'id', $db);
+        parent::__construct('#__workerstatus_workerstatuses', 'id', $db);
     }
 
     /**

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
     <fieldset
-        name="item"
-        label="COM_CARDAPIO_CONFIG_ITEM_SETTINGS_LABEL"
-        description="COM_CARDAPIO_CONFIG_ITEM_SETTINGS_DESC"
+        name="person"
+        label="COM_WORKERSTATUS_CONFIG_PERSON_SETTINGS_LABEL"
+        description="COM_WORKERSTATUS_CONFIG_PERSON_SETTINGS_DESC"
     >
         <field
-            name="show_category"
+            name="show_business"
             type="radio"
-            label="COM_CARDAPIO_ITEM_FIELD_SHOW_CATEGORY_LABEL"
-            description="COM_CARDAPIO_ITEM_FIELD_SHOW_CATEGORY_DESC"
+            label="COM_WORKERSTATUS_PERSON_FIELD_SHOW_BUSINESS_LABEL"
+            description="COM_WORKERSTATUS_PERSON_FIELD_SHOW_BUSINESS_DESC"
             default="0"
         >
             <option value="0">JHIDE</option>
             <option value="1">JSHOW</option>
         </field>
         <field
-            name="item_lightbox"
+            name="person_lightbox"
             type="radio"
-            label="COM_CARDAPIO_ITEM_FIELD_OPEN_LIGHTBOX_LABEL"
-            description="COM_CARDAPIO_ITEM_FIELD_OPEN_LIGHTBOX_DESC"
+            label="COM_WORKERSTATUS_PERSON_FIELD_OPEN_LIGHTBOX_LABEL"
+            description="COM_WORKERSTATUS_PERSON_FIELD_OPEN_LIGHTBOX_DESC"
             default="1"
         >
-            <option value="0">COM_CARDAPIO_NO</option>
-            <option value="1">COM_CARDAPIO_YES</option>
+            <option value="0">COM_WORKERSTATUS_NO</option>
+            <option value="1">COM_WORKERSTATUS_YES</option>
         </field>
     </fieldset>
     <fieldset
@@ -38,7 +38,7 @@
             class="inputbox"
             validate="rules"
             filter="rules"
-            component="com_cardapio"
+            component="com_workerstatus"
             section="component"
         />
     </fieldset>

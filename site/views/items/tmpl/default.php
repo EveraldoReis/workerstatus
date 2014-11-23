@@ -5,30 +5,30 @@
  * and open the template in the editor.
  */
 ?>
-<table class="items">
+<table class="persons">
     <?php
-    foreach ($this->items as $item):
+    foreach ($this->persons as $person):
         $prices = array();
 
-        $item->complex_price = json_decode($item->complex_price);
+        $person->complex_price = json_decode($person->complex_price);
 
-        foreach ($item->complex_price->label as $k => $label)
+        foreach ($person->complex_price->label as $k => $label)
         {
-            $prices[$item->complex_price->label[$k]] = $item->complex_price->value[$k];
+            $prices[$person->complex_price->label[$k]] = $person->complex_price->value[$k];
         }
-        ?><tr class="item">
+        ?><tr class="person">
             <td>
-                <a href="<?php echo $this->baseUrl . $item->image; ?>" class="modal" rel="{helper: 'image'}"><?php if($item->image): ?><img style="width: 80px;" src="<?php echo $this->baseUrl . $item->image; ?>" /><?php endif; ?></a>
+                <a href="<?php echo $this->baseUrl . $person->image; ?>" class="modal" rel="{helper: 'image'}"><?php if($person->image): ?><img style="width: 80px;" src="<?php echo $this->baseUrl . $person->image; ?>" /><?php endif; ?></a>
             </td>
             <td>
                 <h3>
-                    <a class="modal" rel="{helper: 'ajax'}" href="<?php echo JRoute::_('index.php?option=com_cardapio&view=item&id=' . $item->id); ?>">
-                        <?php echo $item->name; ?>
+                    <a class="modal" rel="{helper: 'ajax'}" href="<?php echo JRoute::_('index.php?option=com_workerstatus&view=person&id=' . $person->id); ?>">
+                        <?php echo $person->name; ?>
                     </a>
                 </h3>
             </td>
-            <td><p><?php echo $item->ingredients ? $item->ingredients : '-'; ?></p></td>
-            <td><p><?php echo $item->description_long ? $item->description_long : '-'; ?></p></td>
+            <td><p><?php echo $person->ingredients ? $person->ingredients : '-'; ?></p></td>
+            <td><p><?php echo $person->description_long ? $person->description_long : '-'; ?></p></td>
             <?php foreach ($this->labels as $label): ?>
             <td style="width: 100px;line-height: 50px;"><?php if(isset($prices[$label->label])): ?><div style="display: inline-block; float: left;"><div style="width:48px; height: 48px; display: block; float: left; margin: 0 5px; background-image: url('<?php echo $this->sizes[$label->label]; ?>'); background-size: cover; background-repeat: no-repeat; background-position: center;" width="48" /></div> <div style="float: right; display: inline-block;"><?php echo isset($prices[$label->label]) ? $prices[$label->label] : '-'; ?></div><?php endif; ?></td>
             <?php endforeach; ?>

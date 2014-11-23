@@ -3,18 +3,18 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-// import Joomla modelitem library
-jimport('joomla.application.component.modelitem');
+// import Joomla modelperson library
+jimport('joomla.application.component.modelperson');
 
 /**
  * HelloWorld Model
  */
-class CardapioModelItems extends JModelItem
+class WorkerstatusModelPersons extends JModelPerson
 {
 
     public $menuparams;
 
-    public function getTable($type = 'Item', $prefix = 'CardapioTable', $config = array())
+    public function getTable($type = 'Person', $prefix = 'WorkerstatusTable', $config = array())
     {
         return JTable::getInstance($type, $prefix, $config);
     }
@@ -27,31 +27,31 @@ class CardapioModelItems extends JModelItem
         // Select some fields
         $query->select('*');
         // From the hello table
-        $query->from('#__cardapio_items');
+        $query->from('#__workerstatus_persons');
         return $query;
     }
 
-    public function getItems()
+    public function getPersons()
     {
         $db = JFactory::getDbo();
 
         $query            = $db->getQuery(true);
         $query->select('a.*');
-        $query->join('inner', '#__cardapio_categories AS c ON c.id = a.category_id');
-        $query->from('#__cardapio_items AS a');
+        $query->join('inner', '#__workerstatus_businesses AS c ON c.id = a.business_id');
+        $query->from('#__workerstatus_persons AS a');
         $input            = JFactory::getApplication()->input;
-        $menuitemid       = $input->getInt('Itemid');  // this returns the menu id number so you can reference parameters
+        $menupersonid       = $input->getInt('Personid');  // this returns the menu id number so you can reference parameters
         $menu             = JSite::getMenu();
-        $this->menuparams = $menu->getParams($menuitemid);
-        if ($catid            = $this->menuparams->get('category_id'))
+        $this->menuparams = $menu->getParams($menupersonid);
+        if ($catid            = $this->menuparams->get('business_id'))
         {
-            $catid = implode(' OR category_id = ', $catid);
-            $query->where("a.category_id = $catid");
+            $catid = implode(' OR business_id = ', $catid);
+            $query->where("a.business_id = $catid");
         }
-        if ($carid = $this->menuparams->get('cardapio_id'))
+        if ($carid = $this->menuparams->get('workerstatus_id'))
         {
-            $carid = implode(' OR cardapio_id = ', $carid);
-            $query->where("a.cardapio_id = $carid");
+            $carid = implode(' OR workerstatus_id = ', $carid);
+            $query->where("a.workerstatus_id = $carid");
         }
         $db->setQuery($query);
         $result = $db->loadObjectList();
@@ -64,7 +64,7 @@ class CardapioModelItems extends JModelItem
 
         $query  = $db->getQuery(true);
         $query->select('a.*');
-        $query->from('#__cardapio_sizes AS a');
+        $query->from('#__workerstatus_sizes AS a');
         $db->setQuery($query);
         $result = $db->loadObjectList();
         $sizes  = array();
@@ -83,22 +83,22 @@ class CardapioModelItems extends JModelItem
         $query            = $db->getQuery(true);
         $query->select('a.label');
         $query->group('label');
-        $query->from('#__cardapio_prices AS a');
-        $query->join('inner', '#__cardapio_items AS b ON b.id = a.item_id');
-        $query->join('inner', '#__cardapio_categories AS c ON c.id = b.category_id');
-        $query->join('inner', '#__cardapio_cardapios AS d ON d.id = b.cardapio_id');
+        $query->from('#__workerstatus_prices AS a');
+        $query->join('inner', '#__workerstatus_persons AS b ON b.id = a.person_id');
+        $query->join('inner', '#__workerstatus_businesses AS c ON c.id = b.business_id');
+        $query->join('inner', '#__workerstatus_workerstatuses AS d ON d.id = b.workerstatus_id');
         $query->where(array(
             'a.label != ""'));
         $input            = JFactory::getApplication()->input;
-        $menuitemid       = $input->getInt('Itemid');  // this returns the menu id number so you can reference parameters
+        $menupersonid       = $input->getInt('Personid');  // this returns the menu id number so you can reference parameters
         $menu             = JSite::getMenu();
-        $this->menuparams = $menu->getParams($menuitemid);
-        if ($catid            = $this->menuparams->get('category_id'))
+        $this->menuparams = $menu->getParams($menupersonid);
+        if ($catid            = $this->menuparams->get('business_id'))
         {
             $catid = implode(' OR c.id = ', $catid);
             $query->where("c.id = $catid");
         }
-        if ($carid = $this->menuparams->get('cardapio_id'))
+        if ($carid = $this->menuparams->get('workerstatus_id'))
         {
             $carid = implode(' OR d.id = ', $carid);
             $query->where("d.id = $carid");
@@ -115,7 +115,7 @@ class CardapioModelItems extends JModelItem
         if (empty($this->_pagination))
         {
             jimport('joomla.html.pagination');
-            $this->_pagination = new JPagination(count($this->getItems()), $this->getState('limitstart'),
+            $this->_pagination = new JPagination(count($this->getPersons()), $this->getState('limitstart'),
                     $this->getState('limit'));
         }
         return $this->_pagination;

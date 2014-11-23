@@ -9,14 +9,14 @@ JFormHelper::loadFieldClass('list');
 /**
  * HelloWorld Form Field class for the HelloWorld component
  */
-class JFormFieldItem extends JFormFieldList
+class JFormFieldPerson extends JFormFieldList
 {
         /**
          * The field type.
          *
          * @var         string
          */
-        protected $type = 'Item';
+        protected $type = 'Person';
  
         /**
          * Method to get a list of options for a list input.
@@ -28,7 +28,7 @@ class JFormFieldItem extends JFormFieldList
                 $db = JFactory::getDBO();
                 $query = $db->getQuery(true);
                 $query->select('id,name');
-                $query->from('#__cardapio_items');
+                $query->from('#__workerstatus_persons');
                 $db->setQuery((string)$query);
                 $db->query();
                 $messages = $db->loadObjectList();

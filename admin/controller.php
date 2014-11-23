@@ -10,18 +10,18 @@ defined('_JEXEC') or exit('Restricted access');
 
 jimport('joomla.application.component.controller');
 
-class CardapioController extends JController
+class WorkerstatusController extends JController
 {
 
     function display($cacheable = false, $urlparams = false)
     {
         $input = JFactory::getApplication()->input;
-        $input->set('view', $input->getCmd('view', 'Cardapios'));
+        $input->set('view', $input->getCmd('view', 'Workerstatuses'));
 
         parent::display($cacheable);
         
         // Set the submenu
-        CardapioHelper::addSubmenu('messages');
+        WorkerstatusHelper::addSubmenu('messages');
     }
 
 }

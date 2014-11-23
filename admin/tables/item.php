@@ -9,7 +9,7 @@ jimport('joomla.database.table');
 /**
  * Hello Table class
  */
-class CardapioTableItem extends JTable
+class WorkerstatusTablePerson extends JTable
 {
 
     /**
@@ -19,7 +19,7 @@ class CardapioTableItem extends JTable
      */
     function __construct(&$db)
     {
-        parent::__construct('#__cardapio_items', 'id', $db);
+        parent::__construct('#__workerstatus_persons', 'id', $db);
     }
     
     function store($updateNulls = false)
@@ -29,7 +29,7 @@ class CardapioTableItem extends JTable
         $db         = JFactory::getDbo();
         if ($this->id)
         {
-            $db->setQuery('DELETE FROM #__cardapio_prices WHERE item_id = ' . $this->id);
+            $db->setQuery('DELETE FROM #__workerstatus_prices WHERE person_id = ' . $this->id);
 
             $db->query();
         }
@@ -38,7 +38,7 @@ class CardapioTableItem extends JTable
         {
             if ('' == trim($label))
                 continue;
-            $db->setQuery('INSERT IGNORE INTO #__cardapio_prices (`item_id`,`label`,`value`) VALUES ("' . $this->id . '", "' . ucfirst($this->complex_price->label->$k) . '", "' . $this->complex_price->value->$k . '")');
+            $db->setQuery('INSERT IGNORE INTO #__workerstatus_prices (`person_id`,`label`,`value`) VALUES ("' . $this->id . '", "' . ucfirst($this->complex_price->label->$k) . '", "' . $this->complex_price->value->$k . '")');
 
             $db->query();
         }

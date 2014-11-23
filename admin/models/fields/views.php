@@ -33,6 +33,6 @@ class JFormFieldImpViews extends JFormField
 	{
 		$onclick	= ' onclick="document.id(\''.$this->id.'\').value=\'0\';"';
 
-		return '<input style="border:0;" type="text" name="'.$this->name.'" id="'.$this->id.'" value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" readonly="readonly" /><input type="button"'.$onclick.' value="'.JText::_('COM_CARDAPIO_RESET_VIEWS').'" class="button"/>';
+		return '<input style="border:0;" type="text" name="'.$this->name.'" id="'.$this->id.'" value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" readonly="readonly" /><input type="button"'.$onclick.' value="'.JText::_('COM_WORKERSTATUS_RESET_VIEWS').'" class="button"/>';
 	}
 }

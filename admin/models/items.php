@@ -8,7 +8,7 @@ jimport('joomla.application.component.modellist');
 /**
  * HelloWorldList Model
  */
-class CardapioModelItems extends JModelList
+class WorkerstatusModelPersons extends JModelList
 {
 
     //Add this handy array with database fields to search in
@@ -23,8 +23,8 @@ class CardapioModelItems extends JModelList
         {
             $config['filter_fields'] = array(
                 'a.id',
-                'a.category_id',
-                'a.cardapio_id',
+                'a.business_id',
+                'a.workerstatus_id',
                 'a.name',
                 'a.alias',
                 'a.state',
@@ -52,7 +52,7 @@ class CardapioModelItems extends JModelList
      * @return	JTable	A database object
      * @since	1.6
      */
-    public function getTable($type = 'Item', $prefix = 'CardapioTable', $config = array())
+    public function getTable($type = 'Person', $prefix = 'WorkerstatusTable', $config = array())
     {
         return JTable::getInstance($type, $prefix, $config);
     }
@@ -69,9 +69,9 @@ class CardapioModelItems extends JModelList
 
         //CHANGE THIS QUERY AS YOU NEED...
         $query->select('*, '
-                . '(SELECT name FROM #__cardapio_cardapios WHERE id = a.cardapio_id) AS cardapio_name,'
-                . '(SELECT name FROM #__cardapio_categories WHERE id = a.category_id) AS category_name')
-                ->from('#__cardapio_items AS a')
+                . '(SELECT name FROM #__workerstatus_workerstatuses WHERE id = a.workerstatus_id) AS workerstatus_name,'
+                . '(SELECT name FROM #__workerstatus_businesses WHERE id = a.business_id) AS business_name')
+                ->from('#__workerstatus_persons AS a')
                 ->order($db->escape($this->getState('list.ordering', 'a.cid')) . ' ' .
                         $db->escape($this->getState('list.direction', 'desc')));
 
@@ -171,7 +171,7 @@ class CardapioModelItems extends JModelList
         $cids   = implode("','", $cid);
         $db     = JFactory::getDBO();
         $query  = $db->getQuery(true);
-        $query->update('#__cardapio_items');
+        $query->update('#__workerstatus_persons');
         $query->set(array($db->quoteName('state') . '=' . $value));
         $query->where(array(
             "id IN ('$cids')"));
@@ -184,7 +184,7 @@ class CardapioModelItems extends JModelList
         $cids   = implode("','", $cid);
         $db     = JFactory::getDBO();
         $query  = $db->getQuery(true);
-        $query->delete('#__cardapio_items');
+        $query->delete('#__workerstatus_persons');
         $query->where(array(
             "id IN ('$cids')"));
         $db->setQuery($query);

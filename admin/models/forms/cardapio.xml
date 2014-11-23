@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-    <fieldset name="details" addrulepath="/administrator/components/com_cardapio/models/forms/rules">
+    <fieldset name="details" addrulepath="/administrator/components/com_workerstatus/models/forms/rules">
         <field
             name="id"
             type="hidden"
@@ -8,8 +8,8 @@
         <field
             name="name"
             type="text"
-            label="COM_CARDAPIO_GENERIC_HEADING_NAME"
-            description="COM_CARDAPIO_GENERIC_HEADING_NAME"
+            label="COM_WORKERSTATUS_GENERIC_HEADING_NAME"
+            description="COM_WORKERSTATUS_GENERIC_HEADING_NAME"
             validate="name"
             required="true"
             size="80"
@@ -19,10 +19,10 @@
 
         <field name="alias" type="text" class="inputbox"
                size="40" label="JFIELD_ALIAS_LABEL"
-               description="COM_CARDAPIO_FIELD_ALIAS_DESC" />
+               description="COM_WORKERSTATUS_FIELD_ALIAS_DESC" />
         
         <field name="state" type="list"
-               label="JSTATUS" description="COM_CARDAPIO_FIELD_STATE_DESC"
+               label="JSTATUS" description="COM_WORKERSTATUS_FIELD_STATE_DESC"
                class="inputbox" size="1" default="1" >
             <option value="1">JPUBLISHED</option>
             <option value="0">JUNPUBLISHED</option>
@@ -34,14 +34,14 @@
                label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
 
         <field name="language" type="contentlanguage" label="JFIELD_LANGUAGE_LABEL"
-               description="COM_CARDAPIO_FIELD_LANGUAGE_DESC" class="inputbox">
+               description="COM_WORKERSTATUS_FIELD_LANGUAGE_DESC" class="inputbox">
             <option value="*">JALL</option>
         </field>
         <field
             name="image"
             type="media"
-            label="COM_CARDAPIO_GENERIC_HEADING_IMAGE"
-            description="COM_CARDAPIO_GENERIC_HEADING_IMAGE"
+            label="COM_WORKERSTATUS_GENERIC_HEADING_IMAGE"
+            description="COM_WORKERSTATUS_GENERIC_HEADING_IMAGE"
             class="inputbox"
             default=""
         />
@@ -53,8 +53,8 @@
             <field
                 name="show_image"
                 type="list"
-                label="COM_CARDAPIO_GENERIC_FIELD_SHOW_IMAGE_LABEL"
-                description="COM_CARDAPIO_GENERIC_FIELD_SHOW_IMAGE_DESC"
+                label="COM_WORKERSTATUS_GENERIC_FIELD_SHOW_IMAGE_LABEL"
+                description="COM_WORKERSTATUS_GENERIC_FIELD_SHOW_IMAGE_DESC"
                 default="">
                 <option value="">JGLOBAL_USE_GLOBAL</option>
                 <option value="0">JHIDE</option>
@@ -63,28 +63,28 @@
         </fieldset>
     </fields>
     <fieldset name="publish"
-              label="COM_CARDAPIO_GROUP_LABEL_PUBLISHING_DETAILS">
+              label="COM_WORKERSTATUS_GROUP_LABEL_PUBLISHING_DETAILS">
         <field name="created" type="calendar"
-               label="COM_CARDAPIO_FIELD_CREATED_LABEL" description="COM_CARDAPIO_FIELD_CREATED_DESC"
+               label="COM_WORKERSTATUS_FIELD_CREATED_LABEL" description="COM_WORKERSTATUS_FIELD_CREATED_DESC"
                class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S"
                filter="user_utc" />
         <field name="publish_up" type="calendar"
-               label="COM_CARDAPIO_FIELD_PUBLISH_UP_LABEL" description="COM_CARDAPIO_FIELD_PUBLISH_UP_DESC"
+               label="COM_WORKERSTATUS_FIELD_PUBLISH_UP_LABEL" description="COM_WORKERSTATUS_FIELD_PUBLISH_UP_DESC"
                class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22"
                filter="user_utc" />
         <field name="publish_down" type="calendar"
-               label="COM_CARDAPIO_FIELD_PUBLISH_DOWN_LABEL" description="COM_CARDAPIO_FIELD_PUBLISH_DOWN_DESC"
+               label="COM_WORKERSTATUS_FIELD_PUBLISH_DOWN_LABEL" description="COM_WORKERSTATUS_FIELD_PUBLISH_DOWN_DESC"
                class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22"
                filter="user_utc" />
         <field name="track_views" type="list" default="0"
-               label="COM_CARDAPIO_FIELD_TRACKVIEW_LABEL" description="COM_CARDAPIO_FIELD_TRACKVIEW_DESC">
-            <option value="-1">COM_CARDAPIO_FIELD_VALUE_USECLIENTDEFAULT
+               label="COM_WORKERSTATUS_FIELD_TRACKVIEW_LABEL" description="COM_WORKERSTATUS_FIELD_TRACKVIEW_DESC">
+            <option value="-1">COM_WORKERSTATUS_FIELD_VALUE_USECLIENTDEFAULT
             </option>
             <option value="0">JNO</option>
             <option value="1">JYES</option>
         </field>
         <field name="views" type="views" default="0"
-               label="COM_CARDAPIO_FIELD_VIEWS_LABEL" description="COM_CARDAPIO_FIELD_VIEWS_DESC" />
+               label="COM_WORKERSTATUS_FIELD_VIEWS_LABEL" description="COM_WORKERSTATUS_FIELD_VIEWS_DESC" />
     </fieldset>
 
     <fieldset name="metadata"
@@ -92,19 +92,19 @@
 
         <field name="metakey" type="textarea" class="inputbox"
                        rows="3" cols="30" label="JFIELD_META_KEYWORDS_LABEL"
-                       description="COM_CARDAPIO_FIELD_METAKEYWORDS_DESC" />
+                       description="COM_WORKERSTATUS_FIELD_METAKEYWORDS_DESC" />
 
         <field name="own_prefix" type="radio"
-                       label="COM_CARDAPIO_FIELD_CARDAPIOOWNPREFIX_LABEL"
-                       description="COM_CARDAPIO_FIELD_CARDAPIOOWNPREFIX_DESC"
+                       label="COM_WORKERSTATUS_FIELD_WORKERSTATUSOWNPREFIX_LABEL"
+                       description="COM_WORKERSTATUS_FIELD_WORKERSTATUSOWNPREFIX_DESC"
                        default="0" class="inputbox">
             <option value="0">JNO</option>
             <option value="1">JYES</option>
         </field>
 
         <field name="metakey_prefix" type="text"
-                       label="COM_CARDAPIO_FIELD_METAKEYWORDPREFIX_LABEL"
-                       description="COM_CARDAPIO_FIELD_METAKEYWORDPREFIX_DESC" />
+                       label="COM_WORKERSTATUS_FIELD_METAKEYWORDPREFIX_LABEL"
+                       description="COM_WORKERSTATUS_FIELD_METAKEYWORDPREFIX_DESC" />
 
     </fieldset>
         
@@ -117,8 +117,8 @@
                filter="rules"
                validate="rules"
                class="inputbox"
-               component="com_cardapio"
-               section="cardapio"
+               component="com_workerstatus"
+               section="workerstatus"
         />
     </fieldset>
 </form>

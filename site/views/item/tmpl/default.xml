@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="COM_CARDAPIO_ITEM_VIEW_DEFAULT_TITLE">
+	<layout title="COM_WORKERSTATUS_PERSON_VIEW_DEFAULT_TITLE">
 		<message>
-                        <![CDATA[COM_CARDAPIO_ITEM_VIEW_DEFAULT_DESC]]>
+                        <![CDATA[COM_WORKERSTATUS_PERSON_VIEW_DEFAULT_DESC]]>
 		</message>
 	</layout>
 	<fields name="params">
-		<fieldset name="request" addfieldpath="/administrator/components/com_cardapio/models/fields">
-			<field name="id" type="item" multiple="true" label="COM_CARDAPIO_GENERIC_HEADING_ITEM"
-				description="COM_CARDAPIO_GENERIC_HEADING_ITEM" />
-			<field name="show_category" type="radio" default="0"
-				label="COM_CARDAPIO_GENERIC_SHOW_CATEGORY" description="COM_CARDAPIO_GENERIC_SHOW_CATEGORY">
+		<fieldset name="request" addfieldpath="/administrator/components/com_workerstatus/models/fields">
+			<field name="id" type="person" multiple="true" label="COM_WORKERSTATUS_GENERIC_HEADING_PERSON"
+				description="COM_WORKERSTATUS_GENERIC_HEADING_PERSON" />
+			<field name="show_business" type="radio" default="0"
+				label="COM_WORKERSTATUS_GENERIC_SHOW_BUSINESS" description="COM_WORKERSTATUS_GENERIC_SHOW_BUSINESS">
 				<option value="0">Não</option>
 				<option value="1">Sim</option>
 			</field>
-			<field name="show_cardapio" type="radio" default="0"
-				label="COM_CARDAPIO_GENERIC_SHOW_CARDAPIO" description="COM_CARDAPIO_GENERIC_SHOW_CARDAPIO">
+			<field name="show_workerstatus" type="radio" default="0"
+				label="COM_WORKERSTATUS_GENERIC_SHOW_WORKERSTATUS" description="COM_WORKERSTATUS_GENERIC_SHOW_WORKERSTATUS">
 				<option value="0">Não</option>
 				<option value="1">Sim</option>
 			</field>

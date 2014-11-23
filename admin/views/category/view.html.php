@@ -4,7 +4,7 @@ defined('_JEXEC') or exit('Restricted access');
 
 jimport('joomla.application.component.view');
 
-class CardapioViewCategory extends Jview
+class WorkerstatusViewBusiness extends Jview
 {
 
     protected $canDo;
@@ -12,11 +12,11 @@ class CardapioViewCategory extends Jview
     function display($tpl = null)
     {
         $this->form   = $this->get('Form');
-        $this->item   = $this->get('Item');
+        $this->person   = $this->get('Person');
         $this->script = $this->get('Script');
 
         // What Access Permissions does this user have? What can (s)he do?
-        $this->canDo = CardapioHelper::getActions($this->item->id);
+        $this->canDo = WorkerstatusHelper::getActions($this->person->id);
 
         $this->addToolBar();
 
@@ -31,12 +31,12 @@ class CardapioViewCategory extends Jview
 
         $input->set('hidemainmenu', true);
 
-        $isNew = ($this->item->id == 0);
+        $isNew = ($this->person->id == 0);
 
-        JToolbarHelper::title($isNew ? JText::_('COM_CARDAPIO_MANAGER_CATEGORY_NEW') : JText::_('COM_CARDAPIO_MANAGER_CATEGORY_EDIT'));
+        JToolbarHelper::title($isNew ? JText::_('COM_WORKERSTATUS_MANAGER_BUSINESS_NEW') : JText::_('COM_WORKERSTATUS_MANAGER_BUSINESS_EDIT'));
 
         // Access check: is this user allowed to access the backend of this component?
-        if (!JFactory::getUser()->authorise('core.manage', 'com_cardapio'))
+        if (!JFactory::getUser()->authorise('core.manage', 'com_workerstatus'))
         {
             return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
         }
@@ -47,35 +47,35 @@ class CardapioViewCategory extends Jview
             // For new records, check the create permission.
             if ($this->canDo->get('core.create'))
             {
-                JToolBarHelper::apply('category.apply', 'JTOOLBAR_APPLY');
-                JToolBarHelper::save('category.save', 'JTOOLBAR_SAVE');
-                JToolBarHelper::custom('category.save2new', 'save-new.png', 'save-new_f2.png',
+                JToolBarHelper::apply('business.apply', 'JTOOLBAR_APPLY');
+                JToolBarHelper::save('business.save', 'JTOOLBAR_SAVE');
+                JToolBarHelper::custom('business.save2new', 'save-new.png', 'save-new_f2.png',
                         'JTOOLBAR_SAVE_AND_NEW', false);
             }
-            JToolBarHelper::cancel('category.cancel', 'JTOOLBAR_CANCEL');
+            JToolBarHelper::cancel('business.cancel', 'JTOOLBAR_CANCEL');
         }
         else
         {
             if ($this->canDo->get('core.edit'))
             {
                 // We can save the new record
-                JToolBarHelper::apply('category.apply', 'JTOOLBAR_APPLY');
-                JToolBarHelper::save('category.save', 'JTOOLBAR_SAVE');
+                JToolBarHelper::apply('business.apply', 'JTOOLBAR_APPLY');
+                JToolBarHelper::save('business.save', 'JTOOLBAR_SAVE');
 
                 // We can save this record, but check the create permission to see
                 // if we can return to make a new one.
                 if ($this->canDo->get('core.create'))
                 {
-                    JToolBarHelper::custom('category.save2new', 'save-new.png', 'save-new_f2.png',
+                    JToolBarHelper::custom('business.save2new', 'save-new.png', 'save-new_f2.png',
                             'JTOOLBAR_SAVE_AND_NEW', false);
                 }
             }
             if ($this->canDo->get('core.create'))
             {
-                JToolBarHelper::custom('category.save2copy', 'save-copy.png', 'save-copy_f2.png',
+                JToolBarHelper::custom('business.save2copy', 'save-copy.png', 'save-copy_f2.png',
                         'JTOOLBAR_SAVE_AS_COPY', false);
             }
-            JToolBarHelper::cancel('category.cancel', 'JTOOLBAR_CLOSE');
+            JToolBarHelper::cancel('business.cancel', 'JTOOLBAR_CLOSE');
         }
     }
 
@@ -86,13 +86,13 @@ class CardapioViewCategory extends Jview
      */
     protected function setDocument()
     {
-        $isNew    = ($this->item->id < 1);
+        $isNew    = ($this->person->id < 1);
         $document = JFactory::getDocument();
-        $document->setTitle($isNew ? JText::_('COM_CARDAPIO_CATEGORY_CREATING') : JText::_('COM_CARDAPIO_CATEGORY_EDITING'));
+        $document->setTitle($isNew ? JText::_('COM_WORKERSTATUS_BUSINESS_CREATING') : JText::_('COM_WORKERSTATUS_BUSINESS_EDITING'));
         $document->addScript(JURI::root() . $this->script);
-        $document->addScript(JURI::root() . "/administrator/components/com_cardapio"
-                . "/views/category/submitbutton.js");
-        JText::script('COM_CARDAPION_CATEGORY_ERROR_UNACCEPTABLE');
+        $document->addScript(JURI::root() . "/administrator/components/com_workerstatus"
+                . "/views/business/submitbutton.js");
+        JText::script('COM_WORKERSTATUSN_BUSINESS_ERROR_UNACCEPTABLE');
     }
 
 }

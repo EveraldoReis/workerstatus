@@ -10,7 +10,7 @@ defined('_JEXEC') or exit('Restricted access');
 
 jimport('joomla.application.component.controller');
 
-$controller = JController::getInstance('Cardapio');
+$controller = JController::getInstance('Workerstatus');
 
 $input = JFactory::getApplication()->input;
 

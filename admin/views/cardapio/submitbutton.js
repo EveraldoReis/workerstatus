@@ -28,7 +28,7 @@ Joomla.submitbutton = function (task)
         }
         else
         {
-            alert(Joomla.JText._('COM_CARDAPIO_CARDAPIO_ERROR_UNACCEPTABLE',
+            alert(Joomla.JText._('COM_WORKERSTATUS_WORKERSTATUS_ERROR_UNACCEPTABLE',
                     'Some values are unacceptable'));
             return false;
         }

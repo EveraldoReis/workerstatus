@@ -4,7 +4,7 @@ defined('_JEXEC') or exit('Restricted access');
 
 jimport('joomla.application.component.view');
 
-class CardapioViewSize extends Jview
+class WorkerstatusViewSize extends Jview
 {
 
     protected $canDo;
@@ -12,11 +12,11 @@ class CardapioViewSize extends Jview
     function display($tpl = null)
     {
         $this->form   = $this->get('Form');
-        $this->item   = $this->get('Item');
+        $this->person   = $this->get('Person');
         $this->script = $this->get('Script');
 
         // What Access Permissions does this user have? What can (s)he do?
-        $this->canDo = CardapioHelper::getActions($this->item->id);
+        $this->canDo = WorkerstatusHelper::getActions($this->person->id);
 
         $this->addToolBar();
 
@@ -31,12 +31,12 @@ class CardapioViewSize extends Jview
 
         $input->set('hidemainmenu', true);
 
-        $isNew = ($this->item->id == 0);
+        $isNew = ($this->person->id == 0);
 
-        JToolbarHelper::title($isNew ? JText::_('COM_CARDAPIO_MANAGER_CATEGORY_NEW') : JText::_('COM_CARDAPIO_MANAGER_CATEGORY_EDIT'));
+        JToolbarHelper::title($isNew ? JText::_('COM_WORKERSTATUS_MANAGER_BUSINESS_NEW') : JText::_('COM_WORKERSTATUS_MANAGER_BUSINESS_EDIT'));
 
         // Access check: is this user allowed to access the backend of this component?
-        if (!JFactory::getUser()->authorise('core.manage', 'com_cardapio'))
+        if (!JFactory::getUser()->authorise('core.manage', 'com_workerstatus'))
         {
             return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
         }
@@ -86,13 +86,13 @@ class CardapioViewSize extends Jview
      */
     protected function setDocument()
     {
-        $isNew    = ($this->item->id < 1);
+        $isNew    = ($this->person->id < 1);
         $document = JFactory::getDocument();
-        $document->setTitle($isNew ? JText::_('COM_CARDAPIO_CATEGORY_CREATING') : JText::_('COM_CARDAPIO_CATEGORY_EDITING'));
+        $document->setTitle($isNew ? JText::_('COM_WORKERSTATUS_BUSINESS_CREATING') : JText::_('COM_WORKERSTATUS_BUSINESS_EDITING'));
         $document->addScript(JURI::root() . $this->script);
-        $document->addScript(JURI::root() . "/administrator/components/com_cardapio"
+        $document->addScript(JURI::root() . "/administrator/components/com_workerstatus"
                 . "/views/size/submitbutton.js");
-        JText::script('COM_CARDAPION_CATEGORY_ERROR_UNACCEPTABLE');
+        JText::script('COM_WORKERSTATUSN_BUSINESS_ERROR_UNACCEPTABLE');
     }
 
 }

@@ -7,7 +7,7 @@ and open the template in the editor.
 
 
 <extension type="component" version="2.5" method="upgrade">
-    <name>Cardapio</name>    
+    <name>Workerstatus</name>    
     <creationDate>19/11/2014</creationDate>
     <author>Everaldo Reis</author>
     <authorEmail>everaldo@rb2.com.br</authorEmail>
@@ -17,8 +17,8 @@ and open the template in the editor.
     <version>0.0.9</version>
     <description>
         <![CDATA[
-            <h1>Cardápio</h1>
-            <p>Componente para gerenciamento de cardápio</p>
+            <h1>Worker Status</h1>
+            <p>Componente para gerenciamento de status de trabalhadores</p>
         ]]>
     </description>
     
@@ -42,7 +42,7 @@ and open the template in the editor.
     
     <files folder="site">
         <filename>index.html</filename>
-        <filename>cardapio.php</filename>
+        <filename>workerstatus.php</filename>
         <filename>controller.php</filename>
         <folder>assets</folder>
         <folder>controllers</folder>
@@ -52,18 +52,18 @@ and open the template in the editor.
     </files>
     
     <administration>
-        <menu>COM_CARDAPIO_MENU_CARDAPIO</menu>
+        <menu>COM_WORKERSTATUS_MENU_WORKERSTATUS</menu>
         <submenu>
-            <menu view="items">COM_CARDAPIO_MENU_ITEMS</menu>
-            <menu view="cardapios">COM_CARDAPIO_MENU_CARDAPIOS</menu>
-            <menu view="categories">COM_CARDAPIO_MENU_CATEGORIES</menu>
+            <menu view="persons">COM_WORKERSTATUS_MENU_PERSONS</menu>
+            <menu view="workerstatuses">COM_WORKERSTATUS_MENU_WORKERSTATUSES</menu>
+            <menu view="businesses">COM_WORKERSTATUS_MENU_BUSINESSES</menu>
         </submenu>
         
         <files folder="admin">
             <filename>index.html</filename>
             <filename>access.xml</filename>
             <filename>config.xml</filename>
-            <filename>cardapio.php</filename>
+            <filename>workerstatus.php</filename>
             <filename>controller.php</filename>
             <folder>models</folder>
             <folder>views</folder>
@@ -75,8 +75,8 @@ and open the template in the editor.
         </files>
         
         <languages folder="admin">
-            <language tag="pt-BR">language/pt-BR/pt-BR.com_cardapio.ini</language>
-            <language tag="pt-BR">language/pt-BR/pt-BR.com_cardapio.sys.ini</language>
+            <language tag="pt-BR">language/pt-BR/pt-BR.com_workerstatus.ini</language>
+            <language tag="pt-BR">language/pt-BR/pt-BR.com_workerstatus.sys.ini</language>
         </languages>
     </administration>
 </extension>

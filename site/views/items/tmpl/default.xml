@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="COM_CARDAPIO_ITEMS_VIEW_DEFAULT_TITLE">
+	<layout title="COM_WORKERSTATUS_PERSONS_VIEW_DEFAULT_TITLE">
 		<message>
-                        <![CDATA[COM_CARDAPIO_ITEMS_VIEW_DEFAULT_DESC]]>
+                        <![CDATA[COM_WORKERSTATUS_PERSONS_VIEW_DEFAULT_DESC]]>
 		</message>
 	</layout>
 	<fields name="params">
-		<fieldset name="request" addfieldpath="/administrator/components/com_cardapio/models/fields">
-			<field name="category_id" type="Category2" multiple="true" label="COM_CARDAPIO_GENERIC_HEADING_CATEGORY"
-				description="COM_CARDAPIO_GENERIC_HEADING_CATEGORY" />
-			<field name="cardapio_id" type="Cardapio" multiple="true" label="COM_CARDAPIO_GENERIC_HEADING_CARDAPIO"
-				description="COM_CARDAPIO_GENERIC_HEADING_CARDAPIO" />
-			<field name="show_category" type="radio" default="0"
-				label="COM_CARDAPIO_GENERIC_SHOW_CATEGORY" description="COM_CARDAPIO_GENERIC_SHOW_CATEGORY">
+		<fieldset name="request" addfieldpath="/administrator/components/com_workerstatus/models/fields">
+			<field name="business_id" type="Business2" multiple="true" label="COM_WORKERSTATUS_GENERIC_HEADING_BUSINESS"
+				description="COM_WORKERSTATUS_GENERIC_HEADING_BUSINESS" />
+			<field name="workerstatus_id" type="Workerstatus" multiple="true" label="COM_WORKERSTATUS_GENERIC_HEADING_WORKERSTATUS"
+				description="COM_WORKERSTATUS_GENERIC_HEADING_WORKERSTATUS" />
+			<field name="show_business" type="radio" default="0"
+				label="COM_WORKERSTATUS_GENERIC_SHOW_BUSINESS" description="COM_WORKERSTATUS_GENERIC_SHOW_BUSINESS">
 				<option value="0">Não</option>
 				<option value="1">Sim</option>
 			</field>
-			<field name="show_cardapio" type="radio" default="0"
-				label="COM_CARDAPIO_GENERIC_SHOW_CARDAPIO" description="COM_CARDAPIO_GENERIC_SHOW_CARDAPIO">
+			<field name="show_workerstatus" type="radio" default="0"
+				label="COM_WORKERSTATUS_GENERIC_SHOW_WORKERSTATUS" description="COM_WORKERSTATUS_GENERIC_SHOW_WORKERSTATUS">
 				<option value="0">Não</option>
 				<option value="1">Sim</option>
 			</field>

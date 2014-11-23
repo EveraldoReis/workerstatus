@@ -6,16 +6,16 @@ defined('_JEXEC') or die('Restricted Access');
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-class CardapioViewCategories extends JView
+class WorkerstatusViewBussinesses extends JView
 {
 
-    protected $items;
+    protected $persons;
     protected $pagination;
     protected $canDo;
 
     function display($tpl = null)
     {
-        $this->items      = $this->get('Items');
+        $this->persons      = $this->get('Persons');
         $this->pagination = $this->get('Pagination');
         $this->state      = $this->get('State');
 
@@ -28,12 +28,12 @@ class CardapioViewCategories extends JView
         $this->userId    = $this->user->get('id');
         $this->listOrder = $this->escape($this->state->get('list.ordering'));
         $this->listDirn  = $this->escape($this->state->get('list.direction'));
-        $this->canOrder  = $this->user->authorise('core.edit.state', 'com_cardapio.category');
+        $this->canOrder  = $this->user->authorise('core.edit.state', 'com_workerstatus.business');
         $this->saveOrder = $this->listOrder == 'ordering';
         $this->params    = (isset($this->state->params)) ? $this->state->params : new JObject();
 
         // What Access Permissions does this user have? What can (s)he do?
-        $this->canDo = CardapioHelper::getActions();
+        $this->canDo = WorkerstatusHelper::getActions();
 
         if (count($errors = $this->get('Erros')))
         {
@@ -51,35 +51,35 @@ class CardapioViewCategories extends JView
      */
     protected function addToolBar()
     {
-        $canDo = CardapioHelper::getActions($this->state->get('filter.category_id'));
+        $canDo = WorkerstatusHelper::getActions($this->state->get('filter.business_id'));
         $user  = JFactory::getUser();
-        JToolBarHelper::title(JText::_('COM_CARDAPIO_MANAGER_CATEGORIES'));
+        JToolBarHelper::title(JText::_('COM_WORKERSTATUS_MANAGER_BUSINESSES'));
         if ($canDo->get('core.create'))
         {
-            JToolBarHelper::addNew('category.add');
+            JToolBarHelper::addNew('business.add');
         }
 
         if (($canDo->get('core.edit')))
         {
-            JToolBarHelper::editList('category.edit');
+            JToolBarHelper::editList('business.edit');
         }
 
         if ($canDo->get('core.edit.state'))
         {
             JToolBarHelper::divider();
-            JToolBarHelper::publish('categories.publish', 'JTOOLBAR_PUBLISH', true);
-            JToolBarHelper::unpublish('categories.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+            JToolBarHelper::publish('businesses.publish', 'JTOOLBAR_PUBLISH', true);
+            JToolBarHelper::unpublish('businesses.unpublish', 'JTOOLBAR_UNPUBLISH', true);
         }
 
         if ($canDo->get('core.delete'))
         {
-            JToolBarHelper::deleteList('', 'categories.delete');
+            JToolBarHelper::deleteList('', 'businesses.delete');
             JToolBarHelper::divider();
         }
 
         if ($canDo->get('core.admin'))
         {
-            JToolBarHelper::preferences('com_categories');
+            JToolBarHelper::preferences('com_businesses');
             JToolBarHelper::divider();
         }
     }
