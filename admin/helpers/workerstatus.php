@@ -30,6 +30,10 @@ abstract class WorkerstatusHelper
         {
             $document->setTitle(JText::_('COM_WORKERSTATUS_ADMINISTRATION_PERSONS'));
         }
+        if ($submenu == 'workerstatus')
+        {
+            $document->setTitle(JText::_('COM_WORKERSTATUS_ADMINISTRATION_WORKERSTATUSES'));
+        }
         if ($submenu == 'sizes')
         {
             $document->setTitle(JText::_('COM_WORKERSTATUS_ADMINISTRATION_SIZES'));
